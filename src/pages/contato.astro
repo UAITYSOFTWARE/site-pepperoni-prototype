@@ -313,11 +313,11 @@ import Layout from '../layouts/Layout.astro';
     setHref('ct-tel1-link', `tel:${info.telefone1.replace(/\D/g, '')}`);
     setText('ct-tel2-display', info.telefone2);
     setHref('ct-tel2-link', `tel:${info.telefone2.replace(/\D/g, '')}`);
-    setText('ct-whatsapp-display', `${info.whatsappDisplay} — WhatsApp`);
+    setText('ct-whatsapp-display', `${info.whatsapp_display} — WhatsApp`);
     setHref('ct-whatsapp-link', `https://wa.me/${info.whatsapp}`);
     setText('ct-email-display', info.email);
     setHref('ct-email-link', `mailto:${info.email}`);
-    setText('ct-cta-whatsapp', info.whatsappDisplay);
+    setText('ct-cta-whatsapp', info.whatsapp_display);
     setHref('ct-cta-whatsapp', `https://wa.me/${info.whatsapp}`);
   }
 

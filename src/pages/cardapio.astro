@@ -2,99 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 
 const categorias = [
-  { id: 'salgadas', label: 'Pizzas Salgadas' },
-  { id: 'doces', label: 'Pizzas Doces' },
-  { id: 'massas', label: 'Massas' },
-  { id: 'porcoes', label: 'Pratos e Porções' },
-  { id: 'bebidas', label: 'Bebidas' },
-];
-
-const IMG = '/img/pizza-placeholder.svg';
-
-const salgadas = [
-  { name: 'Pepperoni Clássica', desc: 'Molho de Tomate, Mussarela de Búfala e Pepperoni Defumado Importado.', destaque: true, img: IMG },
-  { name: 'Alho e Óleo', desc: 'Molho de Tomate, Mussarela, Alho e Óleo, Orégano.', destaque: false, img: IMG },
-  { name: 'Alho Poró com Ricota', desc: 'Creme de Ricota, Alho Poró, Pimenta do Reino e Azeite Extra Virgem.', destaque: false, img: IMG },
-  { name: 'Atum', desc: 'Molho de Tomate, Mussarela, Atum, Cebola Roxa e Orégano.', destaque: false, img: IMG },
-  { name: 'Ávola', desc: 'Molho de Tomate, Linguiça Apimentada, Mussarela, Mussarela de Búfala, Mel, Pimenta do Reino e Manjericão.', destaque: false, img: IMG },
-  { name: 'Bacalhau', desc: 'Molho de Tomate, Mussarela, Bacalhau, Cebola, Tomate Cereja, Ovos, Azeitona Preta e Orégano.', destaque: false, img: IMG },
-  { name: 'Bacon', desc: 'Molho de Tomate, Mussarela, Bacon e Orégano.', destaque: false, img: IMG },
-  { name: 'Bacon com Milho', desc: 'Molho de Tomate, Mussarela, Bacon, Milho e Orégano.', destaque: false, img: IMG },
-  { name: 'Baiana', desc: 'Molho de Tomate, Mussarela, Charque, Carne ao Molho Apimentado e Orégano.', destaque: false, img: IMG },
-  { name: 'Brócolis', desc: 'Molho de Tomate, Mussarela, Brócolis, Bacon, Milho e Orégano.', destaque: false, img: IMG },
-  { name: 'Burrata', desc: 'Molho de Tomate, Mussarela, Mussarela de Búfala, Tomate Cereja, Burrata, Manjericão, Azeitona Preta e Orégano.', destaque: false, img: IMG },
-  { name: 'Calabresa', desc: 'Molho de Tomate, Mussarela, Calabresa Ceratti e Orégano.', destaque: false, img: IMG },
-  { name: 'Calzone Baiana', desc: 'Molho de Tomate, Mussarela, Charque, Carne ao Molho Apimentado, Ovos e Orégano.', destaque: false, img: IMG },
-  { name: 'Calzone Frango Catupiry', desc: 'Molho de Tomate, Mussarela, Frango, Catupiry e Orégano.', destaque: false, img: IMG },
-  { name: 'Camarão', desc: 'Molho de Tomate, Mussarela, Camarão, Creme de Nata e Orégano.', destaque: false, img: IMG },
-  { name: 'Cinco Queijos', desc: 'Molho de Tomate, Mussarela, Catupiry, Gorgonzola, Provolone, Cheddar e Orégano.', destaque: false, img: IMG },
-  { name: 'Enrolado Grego', desc: 'Geléia de Damasco, Tomate Seco, Azeitona, Bacon, Alho, Mussarela e Brócolis.', destaque: false, img: IMG },
-  { name: 'Escarola c/ Tomate Seco', desc: 'Molho de Tomate, Mussarela, Escarola, Tomate Seco e Orégano.', destaque: false, img: IMG },
-  { name: 'Filézinho', desc: 'Molho de Tomate, Mussarela, Filézinho de Carne, Catupiry, Provolone e Orégano.', destaque: false, img: IMG },
-  { name: 'Focaccine', desc: 'Massa Recheada com Mussarela, Gorgonzola, Catupiry, Coberta com Mel e Gergelim.', destaque: false, img: IMG },
-  { name: 'Frango Caipira', desc: 'Molho de Tomate, Mussarela, Frango Cremoso, Milho, Bacon e Orégano.', destaque: false, img: IMG },
-  { name: 'Frango com Catupiry', desc: 'Molho de Tomate, Mussarela, Frango Cremoso, Catupiry e Orégano.', destaque: false, img: IMG },
-  { name: 'Lombaxi', desc: 'Molho de Tomate, Mussarela, Lombo Ceratti, Abacaxi e Orégano.', destaque: false, img: IMG },
-  { name: 'Lombo c/ Catupiry', desc: 'Molho de Tomate, Mussarela, Lombo Ceratti, Catupiry e Orégano.', destaque: false, img: IMG },
-  { name: 'Lombo c/ Geléia de Pimenta', desc: 'Creme de Ricota, Lombo Ceratti, Pimenta do Reino, Alecrim e Geléia de Pimenta.', destaque: false, img: IMG },
-  { name: 'Marana', desc: 'Molho de Tomate, Mussarela, Provolone, Gorgonzola, Presunto Parma Ceratti, Figo e Orégano.', destaque: false, img: IMG },
-  { name: 'Marguerita', desc: 'Molho de Tomate, Mussarela de Búfala, Manjericão, Parmesão Fresco e Azeite.', destaque: false, img: IMG },
-  { name: 'Marguerita Especial', desc: 'Molho de Tomate, Mussarela de Búfala, Tomate Cereja, Molho Pesto de Manjericão e Orégano.', destaque: false, img: IMG },
-  { name: 'Milho', desc: 'Molho de Tomate, Mussarela, Milho e Orégano.', destaque: false, img: IMG },
-  { name: 'Mista', desc: 'Molho de Tomate, Mussarela, Presunto, Tomate e Orégano.', destaque: false, img: IMG },
-  { name: 'Palmito', desc: 'Molho de Tomate, Mussarela, Palmito, Azeitona, Catupiry e Orégano.', destaque: false, img: IMG },
-  { name: 'Pepperoni', desc: 'Molho de Tomate, Mussarela, Pepperoni Ceratti e Orégano.', destaque: false, img: IMG },
-  { name: 'Portuguesa', desc: 'Molho de Tomate, Mussarela, Presunto, Ervilha, Ovos, Azeitona Preta, Cebola Roxa e Orégano.', destaque: false, img: IMG },
-  { name: 'Quatro Queijos', desc: 'Molho de Tomate, Mussarela, Provolone, Catupiry, Gorgonzola e Orégano.', destaque: false, img: IMG },
-  { name: 'Strogonoff de Carne', desc: 'Molho de Tomate, Mussarela, Strogonoff de Carne, Batata Palha e Orégano.', destaque: false, img: IMG },
-  { name: 'Tomate Seco', desc: 'Molho de Tomate, Mussarela, Tomate Seco, Rúcula e Orégano.', destaque: false, img: IMG },
-  { name: 'Toscana', desc: 'Molho de Tomate, Mussarela, Calabresa ao Molho, Cebola Roxa e Orégano.', destaque: false, img: IMG },
-];
-
-const doces = [
-  { name: 'Abacaxi', desc: 'Mussarela, Abacaxi, Leite Condensado, Coco e Chocolate Branco.' },
-  { name: 'Banana com Canela', desc: 'Mussarela, Banana, Leite Condensado e Canela em Pó.' },
-  { name: 'Banoffee', desc: 'Mussarela, Doce de Leite, Banana e Suspiro.' },
-  { name: 'Beijinho', desc: 'Mussarela, Chocolate Branco, Leite Condensado e Coco.' },
-  { name: 'Califórnia', desc: 'Mussarela, Abacaxi, Pêssego, Figo, Cereja e Leite Condensado.' },
-  { name: 'Calzone Chocopiry', desc: 'Mussarela, Morango e Raspas de Chocolate.' },
-  { name: 'Calzone Tropical', desc: 'Mussarela, Abacaxi, Pêssego, Cereja, Morango, Chocolate Branco.' },
-  { name: 'Charge', desc: 'Mussarela, Leite Condensado, Chocolate e Amendoim.' },
-  { name: 'Chocolate', desc: 'Mussarela e Chocolate ao Leite ou Chocolate Branco.' },
-  { name: 'Confeti', desc: 'Mussarela, Chocolate ao Leite e Confeti.' },
-  { name: 'Favo de Mel', desc: 'Mussarela, Sorvete Favo de Mel e Doce de Leite.' },
-  { name: 'Ovomaltine', desc: 'Mussarela, Creme de Ovomaltine e Chocolate ao Leite Callebaut.' },
-  { name: 'Prestígio', desc: 'Mussarela, Coco, Leite Condensado e Chocolate.' },
-  { name: 'Sensação', desc: 'Mussarela, Morango, Leite Condensado e Chocolate.' },
-];
-
-const massas = [
-  { name: 'Conchiglione de Pepperoni', desc: 'Massa conchiglione recheada com pepperoni.' },
-  { name: 'Lasanha Bolonhesa', desc: 'Camadas de massa fresca, molho bolonhesa e bechamel gratinado.' },
-  { name: 'Lasanha Quatro Queijos', desc: 'Camadas de massa com blend de quatro queijos gratinados.' },
-  { name: 'Nhoque Frito ao Molho Papaline', desc: 'Nhoque frito crocante ao molho papaline cremoso.' },
-  { name: 'Pappardelle ao Molho Pesto', desc: 'Massa pappardelle com molho pesto de manjericão fresco.' },
-  { name: 'Penne ao Molho Funghi', desc: 'Penne com funghi seco rehidratado, creme de leite e parmesão.' },
-  { name: 'Rondelle de Presunto', desc: 'Massa rondelle recheada com presunto.' },
-  { name: 'Sofiatelli de Frango c/ Catupiry', desc: 'Sofiatelli recheado com frango e catupiry. Opção doce: Dois Amores.' },
-  { name: 'Spaghetti Alho e Óleo', desc: 'Espaguete com alho dourado, azeite e pimenta.' },
-  { name: 'Spaghetti Carbonara', desc: 'Espaguete ao molho carbonara com bacon e parmesão.' },
-  { name: 'Spaghetti Molho Italiano', desc: 'Espaguete com molho italiano de tomates frescos e ervas.' },
-];
-
-const porcoes = [
-  { name: 'Batata Frita', desc: 'Porção de batatas fritas crocantes.', icon: 'restaurant' },
-  { name: 'Frango Frito', desc: 'Porção de frango frito empanado.', icon: 'lunch_dining' },
-  { name: 'Polenta Frita', desc: 'Porção de polenta frita crocante.', icon: 'restaurant_menu' },
-];
-
-const bebidas = [
-  { name: 'Água Mineral', desc: 'Água Mineral com e sem Gás 500ml.', icon: 'water_drop' },
-  { name: 'Batidas', desc: 'Morango, Vinho.', icon: 'local_bar' },
-  { name: 'Caipirinha', desc: 'Caipirinha de Pinga, Vodka Smirnoff.', icon: 'liquor' },
-  { name: 'Cervejas', desc: 'Heineken 600ml, Heineken Long Neck 330ml, Original 600ml.', icon: 'sports_bar' },
-  { name: 'Refrigerantes', desc: 'Coca-Cola, Guaraná Antarctica, Sukita, Soda Limonada, Schweppes Citrus, Água Tônica e H2O Limão. Opção Zero Açúcar.', icon: 'local_drink' },
-  { name: 'Sucos', desc: 'Laranja, Abacaxi com Hortelã, Abacaxi, Acerola, Maracujá, Uva, Morango e Morango com Leite. Opção com água ou leite.', icon: 'emoji_food_beverage' },
+  { id: 'salgadas', label: 'Pizzas Salgadas', icon: 'local_pizza' },
+  { id: 'doces', label: 'Pizzas Doces', icon: 'cake' },
+  { id: 'massas', label: 'Massas', icon: 'restaurant' },
+  { id: 'porcoes', label: 'Pratos e Porções', icon: 'lunch_dining' },
+  { id: 'bebidas', label: 'Bebidas', icon: 'local_bar' },
 ];
 ---
 
@@ -129,194 +41,24 @@ const bebidas = [
       ))}
     </div>
 
-    <!-- PIZZAS SALGADAS -->
-    <section id="section-salgadas" class="mb-24">
-      <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4" data-fade-left>
-        <span class="w-12 h-1 bg-primary shrink-0"></span>
-        Pizzas Salgadas
-      </h2>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" data-stagger>
-
-        <!-- Featured Card (Pepperoni) -->
-        {salgadas.filter(p => p.destaque).map((pizza) => (
-          <div class="md:col-span-12 bg-surface-container overflow-hidden group relative flex flex-col md:flex-row items-center" data-stagger-item>
-            <div class="p-10 flex-1 z-10">
-              <span class="text-primary font-black uppercase tracking-widest text-xs mb-2 block">Destaque do Rodízio</span>
-              <h3 class="font-headline font-black text-4xl uppercase mb-4">{pizza.name}</h3>
-              <p class="text-on-surface-variant mb-6 text-base">{pizza.desc} O sabor que deu nome à casa.</p>
-              <div class="flex gap-4 mb-6">
-                <span class="flex items-center gap-1 text-xs font-bold uppercase text-on-surface/50">
-                  <span class="material-symbols-outlined text-primary text-sm">local_pizza</span> Pizza Salgada
-                </span>
-                <span class="flex items-center gap-1 text-xs font-bold uppercase text-on-surface/50">
-                  <span class="material-symbols-outlined text-primary text-sm">star</span> Mais Pedida
-                </span>
-              </div>
-              <div class="text-3xl font-headline font-black text-primary">Incluso no Rodízio</div>
-            </div>
-            <div class="relative w-full md:w-1/3 h-72 md:h-full overflow-hidden bg-white flex items-center justify-center p-4">
-              <img
-                alt={`${pizza.name} — pizza artesanal`}
-                class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700"
-                src={pizza.img}
-              />
+    <!-- Sections (populated by JS from Supabase) -->
+    {categorias.map((cat, i) => (
+      <section id={`section-${cat.id}`} class={`mb-24 ${i > 0 ? 'hidden' : ''}`}>
+        <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4">
+          <span class="w-12 h-1 bg-primary shrink-0"></span>
+          {cat.label}
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-8" id={`grid-${cat.id}`}>
+          <!-- Loading skeleton -->
+          <div class="md:col-span-12 flex justify-center py-16 loading-skeleton">
+            <div class="flex items-center gap-3 text-on-surface-variant">
+              <span class="material-symbols-outlined animate-spin">progress_activity</span>
+              <span class="font-medium">Carregando {cat.label.toLowerCase()}...</span>
             </div>
           </div>
-        ))}
-
-        <!-- All other salgadas -->
-        {salgadas.filter(p => !p.destaque).map((pizza) => (
-          <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors" data-stagger-item>
-            <div>
-              <div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3">
-                <img
-                  alt={pizza.name}
-                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  src={pizza.img}
-                  loading="lazy"
-                />
-              </div>
-              <h3 class="font-headline font-black text-lg uppercase mb-2">{pizza.name}</h3>
-              <p class="text-on-surface-variant text-sm mb-4">{pizza.desc}</p>
-            </div>
-            <div class="flex justify-between items-end">
-              <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-              <span class="material-symbols-outlined text-primary opacity-40">local_pizza</span>
-            </div>
-          </div>
-        ))}
-
-      </div>
-    </section>
-
-    <!-- PIZZAS DOCES -->
-    <section id="section-doces" class="mb-24 hidden">
-      <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4" data-fade-left>
-        <span class="w-12 h-1 bg-primary shrink-0"></span>
-        Pizzas Doces
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" data-stagger>
-        {doces.map((item) => (
-          <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors" data-stagger-item>
-            <div>
-              <div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3">
-                <img
-                  alt={item.name}
-                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  src="/img/doce-placeholder.svg"
-                  loading="lazy"
-                />
-              </div>
-              <h3 class="font-headline font-black text-lg uppercase mb-2">{item.name}</h3>
-              <p class="text-on-surface-variant text-sm mb-4">{item.desc}</p>
-            </div>
-            <div class="flex justify-between items-end">
-              <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-              <span class="material-symbols-outlined text-primary opacity-40">cake</span>
-            </div>
-          </div>
-        ))}
-        <div class="md:col-span-4 bg-primary flex flex-col items-center justify-center p-10 text-center text-on-primary" data-stagger-item>
-          <span class="material-symbols-outlined text-6xl mb-6" style="font-variation-settings: 'FILL' 1;">cake</span>
-          <h4 class="font-headline font-black text-2xl uppercase leading-none mb-4">Sempre Uma<br/>Surpresa Doce</h4>
-          <p class="font-bold text-sm uppercase tracking-widest opacity-80 mb-6">Sabores rotativos toda semana</p>
-          <a href="https://wa.me/5544991566299" target="_blank" rel="noopener" class="border-2 border-on-primary px-6 py-3 font-headline font-black uppercase text-sm hover:bg-on-primary hover:text-primary transition-colors">
-            Perguntar Hoje
-          </a>
         </div>
-      </div>
-    </section>
-
-    <!-- MASSAS -->
-    <section id="section-massas" class="mb-24 hidden">
-      <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4" data-fade-left>
-        <span class="w-12 h-1 bg-primary shrink-0"></span>
-        Massas
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" data-stagger>
-        {massas.map((item) => (
-          <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors" data-stagger-item>
-            <div>
-              <div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3">
-                <img
-                  alt={item.name}
-                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  src="/img/massa-placeholder.svg"
-                  loading="lazy"
-                />
-              </div>
-              <h3 class="font-headline font-black text-lg uppercase mb-2">{item.name}</h3>
-              <p class="text-on-surface-variant text-sm mb-4">{item.desc}</p>
-            </div>
-            <div class="flex justify-between items-end">
-              <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-              <span class="material-symbols-outlined text-primary opacity-40">restaurant</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- PRATOS E PORÇÕES -->
-    <section id="section-porcoes" class="mb-24 hidden">
-      <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4" data-fade-left>
-        <span class="w-12 h-1 bg-primary shrink-0"></span>
-        Pratos e Porções
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" data-stagger>
-        {porcoes.map((item) => (
-          <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors" data-stagger-item>
-            <div>
-              <div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3">
-                <img
-                  alt={item.name}
-                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  src="/img/porcao-placeholder.svg"
-                  loading="lazy"
-                />
-              </div>
-              <h3 class="font-headline font-black text-lg uppercase mb-2">{item.name}</h3>
-              <p class="text-on-surface-variant text-sm mb-4">{item.desc}</p>
-            </div>
-            <div class="flex justify-between items-end">
-              <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-              <span class="material-symbols-outlined text-primary opacity-40">{item.icon}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- BEBIDAS -->
-    <section id="section-bebidas" class="mb-24 hidden">
-      <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4" data-fade-left>
-        <span class="w-12 h-1 bg-primary shrink-0"></span>
-        Bebidas
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-8" data-stagger>
-        {bebidas.map((item) => (
-          <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors" data-stagger-item>
-            <div>
-              <div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3">
-                <img
-                  alt={item.name}
-                  class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500"
-                  src="/img/bebida-placeholder.svg"
-                  loading="lazy"
-                />
-              </div>
-              <h3 class="font-headline font-black text-lg uppercase mb-2">{item.name}</h3>
-              <p class="text-on-surface-variant text-sm mb-4">{item.desc}</p>
-            </div>
-            <div class="flex justify-between items-end">
-              <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-              <span class="material-symbols-outlined text-primary opacity-40">{item.icon}</span>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+      </section>
+    ))}
 
     <!-- Rodízio CTA Banner -->
     <div class="bg-surface-container-highest p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8" data-fade-up>
@@ -344,45 +86,55 @@ const bebidas = [
 
 <script>
   import gsap from 'gsap';
+  import { getCardapio } from '../scripts/admin-store';
 
   // Hero animation
   const tl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
   tl.fromTo('#cardapio-hero h1', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 })
     .fromTo('#cardapio-sub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5');
 
-  // ─── Hydrate from Supabase ───
-  import { getCardapio } from '../scripts/admin-store';
-  const adminItems = await getCardapio();
-  if (adminItems.length > 0) {
-    const grouped: Record<string, typeof adminItems> = {};
-    adminItems.forEach(item => {
-      if (!grouped[item.categoria]) grouped[item.categoria] = [];
-      grouped[item.categoria].push(item);
-    });
+  // ─── Fetch from Supabase and render ───
+  const esc = (s: string) => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
 
-    const escapeHtml = (s: string) => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+  const ICONS: Record<string, string> = {
+    salgadas: 'local_pizza',
+    doces: 'cake',
+    massas: 'restaurant',
+    porcoes: 'lunch_dining',
+    bebidas: 'local_bar',
+  };
 
-    const buildCards = (items: typeof adminItems) => items.map(item => `
-      <div class="md:col-span-4 bg-surface-container-low p-8 flex flex-col justify-between group" data-stagger-item>
+  const items = await getCardapio();
+
+  const grouped: Record<string, typeof items> = {};
+  items.forEach(item => {
+    if (!grouped[item.categoria]) grouped[item.categoria] = [];
+    grouped[item.categoria].push(item);
+  });
+
+  for (const [cat, catItems] of Object.entries(grouped)) {
+    const grid = document.getElementById(`grid-${cat}`);
+    if (!grid) continue;
+
+    const icon = ICONS[cat] || 'local_pizza';
+
+    grid.innerHTML = catItems.map(item => `
+      <div class="md:col-span-4 bg-surface-container-low p-6 flex flex-col justify-between group hover:bg-surface-container transition-colors">
         <div>
-          ${item.imagem_url ? `<div class="w-full h-44 mb-6 overflow-hidden flex items-center justify-center bg-white/95 p-3"><img alt="${escapeHtml(item.titulo)}" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" src="${escapeHtml(item.imagem_url)}" loading="lazy" /></div>` : ''}
-          <h3 class="font-headline font-black text-lg uppercase mb-2">${escapeHtml(item.titulo)}</h3>
-          <p class="text-on-surface-variant text-sm mb-4">${escapeHtml(item.descricao)}</p>
+          ${item.imagem_url ? `<div class="w-full h-40 mb-5 overflow-hidden flex items-center justify-center bg-white/95 p-3"><img alt="${esc(item.titulo)}" class="w-full h-full object-contain group-hover:scale-110 transition-transform duration-500" src="${esc(item.imagem_url)}" loading="lazy" /></div>` : ''}
+          <h3 class="font-headline font-black text-lg uppercase mb-2">${esc(item.titulo)}</h3>
+          <p class="text-on-surface-variant text-sm mb-4">${esc(item.descricao)}</p>
         </div>
         <div class="flex justify-between items-end">
           <div class="text-lg font-headline font-black text-primary">Rodízio</div>
-          <span class="material-symbols-outlined text-primary opacity-40">local_pizza</span>
+          <span class="material-symbols-outlined text-primary opacity-40">${icon}</span>
         </div>
       </div>
     `).join('');
-
-    for (const [cat, items] of Object.entries(grouped)) {
-      const section = document.getElementById(`section-${cat}`);
-      if (!section) continue;
-      const grid = section.querySelector('.grid');
-      if (grid) grid.innerHTML = buildCards(items);
-    }
   }
+
+  // Remove skeletons for empty categories
+  document.querySelectorAll('.loading-skeleton').forEach(el => el.remove());
 
   // Category chip switching
   const chips = document.querySelectorAll<HTMLButtonElement>('.category-chip');
@@ -398,7 +150,6 @@ const bebidas = [
     chip.addEventListener('click', () => {
       const target = chip.dataset.category as string;
 
-      // Update chip styles
       chips.forEach((c) => {
         c.classList.remove('bg-primary', 'text-on-primary');
         c.classList.add('bg-surface-container-high', 'text-on-surface');
@@ -406,7 +157,6 @@ const bebidas = [
       chip.classList.add('bg-primary', 'text-on-primary');
       chip.classList.remove('bg-surface-container-high', 'text-on-surface');
 
-      // Show/hide sections with animation
       Object.entries(sections).forEach(([key, section]) => {
         if (!section) return;
         if (key === target) {

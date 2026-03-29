@@ -1,12 +1,5 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
-const promos = [
-  { title: 'Terça da Pizza', desc: 'Todas as terças: crianças até 10 anos pagam meia no rodízio.', icon: 'local_pizza', img: '/img/promo-pizza.svg' },
-  { title: 'Aniversariante', desc: 'No mês do seu aniversário, o rodízio é por nossa conta. Traga seu RG.', icon: 'cake', img: '/img/promo-pizza.svg' },
-  { title: 'Grupo de 10+', desc: 'Grupos acima de 10 pessoas ganham desconto especial. Reserve com antecedência.', icon: 'groups', img: '/img/mesa-pizza.svg' },
-  { title: 'Fidelidade', desc: 'A cada 5 visitas com comprovante, ganhe 1 rodízio grátis para 2 pessoas.', icon: 'loyalty', img: '/img/promo-pizza.svg' },
-];
 ---
 
 <Layout title="Promoções" description="Confira as promoções da Pizzaria Pepperoni: terça da pizza, aniversariante, grupos e fidelidade.">
@@ -17,12 +10,10 @@ const promos = [
       class="relative overflow-hidden bg-primary-container flex flex-col md:flex-row items-center min-h-[500px]"
       id="promo-hero"
     >
-      <!-- Radial BG -->
       <div class="absolute inset-0 opacity-20 pointer-events-none">
         <div class="w-full h-full" style="background: radial-gradient(circle at 30% 50%, #DE3635 0%, transparent 60%);"></div>
       </div>
 
-      <!-- Text -->
       <div class="relative z-10 p-10 md:p-14 md:w-1/2 opacity-0" id="promo-text">
         <span class="inline-block bg-primary text-on-primary font-headline font-black px-4 py-1 mb-6 text-xs tracking-widest uppercase">
           Todo dia
@@ -49,10 +40,9 @@ const promos = [
         </div>
       </div>
 
-      <!-- Pizza image -->
       <div class="relative md:w-1/2 flex items-center justify-center min-h-[320px] p-8 opacity-0" id="promo-img">
         <img
-          alt="Pizza pepperoni saindo do forno com queijo derretendo e bordas douradas"
+          alt="Pizza pepperoni artesanal"
           class="w-[110%] h-auto object-contain md:absolute md:-right-10 md:rotate-6 drop-shadow-[0_35px_50px_rgba(222,54,53,0.3)]"
           src="/img/hero-pizza.svg"
         />
@@ -62,42 +52,29 @@ const promos = [
 
   <!-- Bento Grid -->
   <section class="px-6 md:px-8 max-w-7xl mx-auto mb-20 grid grid-cols-1 md:grid-cols-3 gap-8">
-
-    <!-- Reserva Família -->
     <div class="md:col-span-2 bg-surface-container-low p-10 relative overflow-hidden flex flex-col justify-between min-h-[420px]" data-fade-up>
       <div class="relative z-10">
         <h2 class="font-headline font-black text-5xl text-on-surface leading-none tracking-tighter uppercase mb-4">
           RESERVA<br/><span class="text-stroke">FAMÍLIA</span>
         </h2>
         <p class="text-on-surface-variant max-w-xs text-lg mb-8">
-          Reúna a família, reserva garantida e mesa preparada para a turma toda. Aceitamos reservas para grupos de qualquer tamanho.
+          Reúna a família, reserva garantida e mesa preparada para a turma toda.
         </p>
       </div>
       <div class="relative z-10 mt-auto">
-        <a
-          href="https://wa.me/5544991566299"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-on-surface text-surface px-8 py-4 font-headline font-black uppercase tracking-tighter hover:scale-105 transition-transform"
-        >
+        <a href="https://wa.me/5544991566299" target="_blank" rel="noopener noreferrer"
+          class="inline-block bg-on-surface text-surface px-8 py-4 font-headline font-black uppercase tracking-tighter hover:scale-105 transition-transform">
           Fazer Reserva
         </a>
       </div>
-      <img
-        alt="Mesa com várias pizzas para grupo de amigos"
-        class="absolute -right-10 -bottom-10 w-2/3 h-auto rotate-[-12deg] opacity-70 mix-blend-lighten pointer-events-none"
-        src="/img/mesa-pizza.svg"
-      />
+      <img alt="Mesa com pizzas" class="absolute -right-10 -bottom-10 w-2/3 h-auto rotate-[-12deg] opacity-70 mix-blend-lighten pointer-events-none" src="/img/mesa-pizza.svg" />
     </div>
 
-    <!-- Pagamentos aceitos -->
     <div class="bg-primary p-10 flex flex-col justify-center items-center text-center relative overflow-hidden" data-fade-up>
       <div class="absolute top-0 left-0 w-full h-1 bg-on-primary opacity-20"></div>
       <div class="relative z-10">
         <span class="material-symbols-outlined text-on-primary text-6xl mb-6 block" style="font-variation-settings: 'FILL' 1;">payments</span>
-        <h3 class="font-headline font-black text-3xl text-on-primary leading-none uppercase mb-4">
-          Pagamentos<br/>Aceitos
-        </h3>
+        <h3 class="font-headline font-black text-3xl text-on-primary leading-none uppercase mb-4">Pagamentos<br/>Aceitos</h3>
         <div class="text-on-primary/80 font-body font-medium text-base mb-2 space-y-1">
           <p>Cartão de Crédito</p>
           <p>Cartão de Débito</p>
@@ -106,42 +83,24 @@ const promos = [
         </div>
         <p class="text-on-primary/50 text-xs uppercase tracking-wider mt-4">Vale-refeição não aceito</p>
       </div>
-      <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-on-primary/10 rounded-full blur-3xl pointer-events-none"></div>
     </div>
-
   </section>
 
-  <!-- Secondary Promotions -->
+  <!-- Promoções (populated by JS from Supabase) -->
   <section class="px-6 md:px-8 max-w-7xl mx-auto pb-24">
     <h2 class="font-headline font-black text-4xl uppercase tracking-tighter mb-12 flex items-center gap-4" data-fade-left>
       Mais Vantagens
       <span class="h-1 flex-grow bg-surface-container-highest"></span>
     </h2>
 
-    <div id="tab-promos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" data-stagger>
-      {promos.map((promo) => (
-        <div class="bg-surface-container p-6 flex flex-col hover:bg-surface-container-high transition-colors group" data-stagger-item>
-          <div class="h-44 overflow-hidden mb-6 bg-surface-container-high">
-            <img
-              alt={promo.title}
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-              src={promo.img}
-            />
-          </div>
-          <span class="material-symbols-outlined text-primary text-2xl mb-3">{promo.icon}</span>
-          <h4 class="font-headline font-black text-xl uppercase mb-2">{promo.title}</h4>
-          <p class="text-on-surface-variant text-sm mb-6 flex-grow">{promo.desc}</p>
-          <a
-            href="https://wa.me/5544991566299"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-primary font-headline font-black uppercase text-sm tracking-widest flex items-center gap-2 group-hover:translate-x-2 transition-transform"
-          >
-            Saiba Mais
-            <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </a>
+    <div id="promos-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- Loading -->
+      <div class="col-span-full flex justify-center py-16" id="promos-loading">
+        <div class="flex items-center gap-3 text-on-surface-variant">
+          <span class="material-symbols-outlined animate-spin">progress_activity</span>
+          <span class="font-medium">Carregando promoções...</span>
         </div>
-      ))}
+      </div>
     </div>
   </section>
 
@@ -149,26 +108,27 @@ const promos = [
 
 <script>
   import gsap from 'gsap';
-
-  // ─── Hydrate from Supabase ───
   import { getPromocoes } from '../scripts/admin-store';
-  const adminPromos = await getPromocoes();
-  if (adminPromos.length > 0) {
-    const escapeHtml = (s: string) => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
-    const grid = document.querySelector('#tab-promos-grid');
-    if (grid) {
-      grid.innerHTML = adminPromos.map(p => `
-        <div class="bg-surface-container p-6 flex flex-col hover:bg-surface-container-high transition-colors group" data-stagger-item>
-          ${p.imagemUrl ? `<div class="h-44 overflow-hidden mb-6 bg-surface-container-high"><img alt="${escapeHtml(p.titulo)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${escapeHtml(p.imagemUrl)}" /></div>` : ''}
-          <span class="material-symbols-outlined text-primary text-2xl mb-3">${escapeHtml(p.icone || 'sell')}</span>
-          <h4 class="font-headline font-black text-xl uppercase mb-2">${escapeHtml(p.titulo)}</h4>
-          <p class="text-on-surface-variant text-sm mb-6 flex-grow">${escapeHtml(p.descricao)}</p>
-          <a href="https://wa.me/5544991566299" target="_blank" rel="noopener noreferrer" class="text-primary font-headline font-black uppercase text-sm tracking-widest flex items-center gap-2 group-hover:translate-x-2 transition-transform">
-            Saiba Mais <span class="material-symbols-outlined text-sm">arrow_forward</span>
-          </a>
-        </div>
-      `).join('');
-    }
+
+  const esc = (s: string) => { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; };
+
+  const promos = await getPromocoes();
+  const grid = document.getElementById('promos-grid');
+
+  if (grid && promos.length > 0) {
+    grid.innerHTML = promos.map(p => `
+      <div class="bg-surface-container p-6 flex flex-col hover:bg-surface-container-high transition-colors group">
+        ${p.imagem_url ? `<div class="h-44 overflow-hidden mb-6 bg-surface-container-high"><img alt="${esc(p.titulo)}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${esc(p.imagem_url)}" /></div>` : ''}
+        <span class="material-symbols-outlined text-primary text-2xl mb-3">${esc(p.icone || 'sell')}</span>
+        <h4 class="font-headline font-black text-xl uppercase mb-2">${esc(p.titulo)}</h4>
+        <p class="text-on-surface-variant text-sm mb-6 flex-grow">${esc(p.descricao)}</p>
+        <a href="https://wa.me/5544991566299" target="_blank" rel="noopener noreferrer" class="text-primary font-headline font-black uppercase text-sm tracking-widest flex items-center gap-2 group-hover:translate-x-2 transition-transform">
+          Saiba Mais <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+    `).join('');
+  } else if (grid) {
+    grid.innerHTML = '<p class="col-span-full text-center text-on-surface-variant py-8">Nenhuma promoção disponível no momento.</p>';
   }
 
   const tl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
