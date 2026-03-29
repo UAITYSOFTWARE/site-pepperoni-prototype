@@ -1,0 +1,250 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const IMG = '/img/pizza-placeholder.svg';
+const IMG_DOCE = '/img/doce-placeholder.svg';
+
+const pizzas = [
+  { name: 'Pepperoni Clássica', desc: 'Molho de tomate artesanal, mussarela de búfala e generosas fatias de pepperoni defumado.', price: 'Rodízio', rotate: '-rotate-6', img: IMG },
+  { name: 'Quatro Queijos', desc: 'Blend de mussarela, provolone, catupiry e parmesão ralado na hora.', price: 'Rodízio', rotate: 'rotate-6', img: IMG },
+  { name: 'Frango c/ Catupiry', desc: 'Frango desfiado temperado, catupiry cremoso e orégano fresco.', price: 'Rodízio', rotate: '-rotate-3', img: IMG },
+  { name: 'Portuguesa', desc: 'Presunto, ovos, cebola, azeitonas, mussarela e orégano — um clássico eterno.', price: 'Rodízio', rotate: 'rotate-0', img: IMG },
+  { name: 'Calabresa Especial', desc: 'Calabresa artesanal fatiada, cebola roxa caramelizada e azeite extravirgem.', price: 'Rodízio', rotate: 'rotate-12', img: IMG },
+  { name: 'Banana c/ Canela', desc: 'Pizza doce com banana fatiada, canela, açúcar e leite condensado. Irresistível.', price: 'Rodízio', rotate: '-rotate-12', img: IMG_DOCE },
+];
+---
+
+<Layout title="Home">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 md:px-8">
+    <div class="absolute inset-0 bg-gradient-to-b from-surface via-surface to-surface-container-low opacity-80 z-0"></div>
+
+    <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <!-- Text -->
+      <div class="text-left">
+        <p
+          id="hero-tag"
+          class="font-headline font-black text-sm tracking-[0.3em] uppercase text-primary mb-6 opacity-0"
+        >
+          Maringá • Paraná • Desde sempre
+        </p>
+        <h1
+          id="hero-title"
+          class="font-headline font-black text-7xl md:text-8xl lg:text-[clamp(5rem,10vw,8rem)] leading-[0.85] tracking-tighter text-on-surface mb-8 opacity-0"
+        >
+          A PIZZA<br/>QUE NÃO<br/>TEM FIM.
+        </h1>
+        <p
+          id="hero-sub"
+          class="font-body text-on-surface-variant text-lg md:text-xl max-w-md mb-10 opacity-0"
+        >
+          Mais de <strong class="text-on-surface">70 sabores</strong> de pizzas doces, salgadas, massas e porções.
+          Rodízio todos os dias das 18h30 às 22h30.
+        </p>
+        <div id="hero-cta" class="flex flex-wrap gap-4 opacity-0">
+          <a
+            href="/cardapio"
+            class="bg-primary text-on-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:scale-105 active:scale-95 transition-all duration-200 brutalist-shadow"
+          >
+            Ver Cardápio
+          </a>
+          <a
+            href="https://wa.me/5544991566299"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="border-2 border-primary text-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:bg-primary hover:text-on-primary transition-all duration-200 flex items-center gap-2"
+          >
+            <span class="material-symbols-outlined">chat</span>
+            Reservar Mesa
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero image (pizza) -->
+      <div class="relative flex justify-center lg:justify-end" id="hero-img">
+        <div class="relative w-full max-w-lg aspect-square opacity-0">
+          <img
+            class="w-full h-full object-contain drop-shadow-[0_35px_60px_rgba(222,54,53,0.25)]"
+            src="/img/hero-pizza.svg"
+            alt="Pizza Pepperoni artesanal — Pizzaria Pepperoni Maringá"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Info bar -->
+    <div id="hero-info" class="relative z-10 mt-16 w-full max-w-7xl opacity-0">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-on-surface/10">
+        <div class="py-6 md:pr-8 md:border-r border-on-surface/10">
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Funcionamento</p>
+          <p class="font-body font-medium text-on-surface-variant">Todos os dias • 18h30 às 22h30</p>
+        </div>
+        <div class="py-6 md:px-8 md:border-r border-on-surface/10">
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Reservas</p>
+          <p class="font-body font-medium text-on-surface-variant">Via WhatsApp até as 18h</p>
+        </div>
+        <div class="py-6 md:pl-8">
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Localização</p>
+          <p class="font-body font-medium text-on-surface-variant">Av. Rio Branco 56 — Maringá, PR</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Social Proof Stats -->
+  <section class="bg-surface-container py-16 px-6 md:px-8" aria-label="Diferenciais da Pizzaria Pepperoni">
+    <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0" data-stagger>
+      <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">70+</span>
+        <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Sabores</span>
+      </div>
+      <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">7</span>
+        <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Dias por semana</span>
+      </div>
+      <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">∞</span>
+        <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Rodízio à vontade</span>
+      </div>
+      <div class="flex flex-col items-center text-center px-4" data-stagger-item>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">4h</span>
+        <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">De funcionamento</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Grid Section -->
+  <section class="bg-surface-container-low py-24 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4" data-fade-up>
+        <h2 class="font-headline font-black text-5xl md:text-6xl text-on-surface tracking-tighter leading-none">
+          SABORES<br/>INESQUECÍVEIS
+        </h2>
+        <p class="text-on-surface-variant font-medium max-w-xs md:text-right">
+          Nossa seleção de pizzas artesanais, todas disponíveis no rodízio diário.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 pt-8" data-stagger>
+        {pizzas.map((pizza) => (
+          <div
+            class="group relative bg-surface-container p-8 transition-all duration-300 hover:bg-surface-container-high"
+            data-stagger-item
+          >
+            <div
+              class={`absolute -top-12 -right-6 w-44 h-44 z-20 transition-transform duration-500 group-hover:scale-110 ${pizza.rotate} group-hover:rotate-0`}
+            >
+              <img
+                class="w-full h-full object-contain drop-shadow-[0_10px_20px_rgba(222,54,53,0.15)]"
+                src={pizza.img}
+                alt={`${pizza.name} — pizza artesanal da Pizzaria Pepperoni`}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div class="relative z-10 mt-12">
+              <h3 class="font-headline font-black text-xl text-on-surface uppercase mb-2">{pizza.name}</h3>
+              <p class="text-on-surface-variant mb-6 font-medium text-sm">{pizza.desc}</p>
+              <div class="flex justify-between items-center">
+                <span class="text-primary font-headline font-black text-xl">{pizza.price}</span>
+                <span class="material-symbols-outlined text-primary">local_pizza</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Look Menu Section -->
+  <section class="py-24 px-6 md:px-8 overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <h2
+        class="font-headline font-black text-7xl md:text-9xl text-on-surface uppercase tracking-tighter mb-16 opacity-10 leading-none"
+        data-fade-left
+      >
+        VER CARDÁPIO
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div class="relative group" data-fade-up>
+          <div class="aspect-[4/5] bg-surface-container overflow-hidden">
+            <img
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              src="/img/forno.svg"
+              alt="Pizza artesanal saindo do forno"
+            />
+          </div>
+          <div class="absolute -bottom-8 -left-8 bg-primary text-on-primary p-8 md:p-10">
+            <h4 class="font-headline font-black text-2xl uppercase tracking-tighter">RODÍZIO</h4>
+            <p class="font-medium mt-1 text-sm">Come à vontade todo dia.</p>
+          </div>
+        </div>
+
+        <div class="space-y-12" data-fade-up>
+          <div class="relative group">
+            <div class="aspect-[16/9] bg-surface-container overflow-hidden">
+              <img
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                src="/img/massa-placeholder.svg"
+                alt="Massas artesanais"
+              />
+            </div>
+            <div class="absolute top-4 right-4 bg-surface-container-highest/80 backdrop-blur-md px-4 py-2">
+              <span class="font-headline font-black text-primary uppercase text-sm">Massas & Porções</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-6">
+            <p class="text-3xl md:text-4xl font-headline font-black text-on-surface leading-tight uppercase">
+              70+ sabores que fazem de cada visita uma experiência diferente.
+            </p>
+            <a
+              class="inline-flex items-center text-primary font-headline font-black text-lg hover:gap-6 gap-2 transition-all duration-300"
+              href="/cardapio"
+            >
+              VER CARDÁPIO COMPLETO
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="bg-primary py-28 px-6 md:px-8">
+    <div class="max-w-7xl mx-auto text-center">
+      <h2 class="font-headline font-black text-5xl md:text-7xl lg:text-8xl text-on-primary uppercase leading-none tracking-tighter mb-12" data-fade-up>
+        RESERVE SUA MESA<br/>VIA WHATSAPP
+      </h2>
+      <p class="text-on-primary/70 font-body text-lg mb-10 max-w-xl mx-auto" data-fade-up>
+        Reservas aceitas até as 18h. Atendemos todos os dias das 18h30 às 22h30.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center" data-fade-up>
+        <a
+          href="https://wa.me/5544991566299"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-on-primary text-primary font-headline font-black text-xl px-12 py-5 hover:scale-105 active:scale-95 transition-all duration-300 brutalist-shadow flex items-center gap-3"
+        >
+          <span class="material-symbols-outlined">chat</span>
+          (44) 99156-6299
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+
+  // Hero entrance animation (runs immediately, no scroll trigger)
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
+
+  tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.6, delay: 0.2 })
+    .fromTo('#hero-title', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 }, '-=0.3')
+    .fromTo('#hero-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.6')
+    .fromTo('#hero-cta', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+    .fromTo('#hero-img .aspect-square', { opacity: 0, scale: 0.85, rotate: -8 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'elastic.out(1, 0.7)' }, '-=1')
+    .fromTo('#hero-info', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
+</script>

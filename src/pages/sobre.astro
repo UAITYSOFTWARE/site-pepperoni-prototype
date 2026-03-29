@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="A Pizzaria" description="Conheça a história da Pizzaria Pepperoni em Maringá-PR. Tradição, sabor e qualidade em cada fatia.">
+
+  <!-- Hero Section -->
+  <section class="relative min-h-[680px] flex items-center overflow-hidden px-6 md:px-16 pt-24">
+    <div class="absolute inset-0 z-0">
+      <img
+        alt="Cozinha da Pizzaria Pepperoni com chefs trabalhando sob iluminação quente"
+        class="w-full h-full object-cover opacity-25 grayscale"
+        src="/img/cozinha.svg"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-surface via-surface/80 to-transparent"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl" id="sobre-hero">
+      <h1 class="text-7xl md:text-[clamp(4rem,12vw,8rem)] font-headline font-black leading-[0.85] tracking-tighter text-on-surface mb-8 opacity-0">
+        A NOSSA<br/><span class="text-primary">HISTÓRIA</span>
+      </h1>
+      <p class="text-xl md:text-2xl font-medium text-on-surface-variant max-w-2xl leading-relaxed opacity-0" id="sobre-sub">
+        Nascemos da paixão pela pizza de verdade — feita com ingredientes honestos, forno quente e amor por Maringá.
+      </p>
+    </div>
+  </section>
+
+  <!-- Origin Story -->
+  <section class="py-24 px-6 md:px-16 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch">
+
+        <!-- Text Block -->
+        <div class="md:col-span-7 flex flex-col justify-center space-y-8 pr-0 md:pr-12" data-fade-up>
+          <div class="inline-block px-4 py-1 bg-primary text-on-primary font-headline font-black text-xs tracking-widest uppercase self-start">
+            Tradição
+          </div>
+          <h2 class="text-4xl md:text-5xl font-headline font-black tracking-tighter leading-none uppercase">
+            O INÍCIO DE UMA <span class="text-primary-fixed-dim">OBSESSÃO</span>
+          </h2>
+          <p class="text-lg text-on-surface-variant leading-relaxed font-light">
+            A Pizzaria Pepperoni nasceu em Maringá com uma missão simples e poderosa: fazer a pizza que a cidade merece. Com mais de 70 sabores desenvolvidos ao longo dos anos, cada receita passou pela aprovação mais rigorosa que existe — o paladar dos nossos clientes.
+          </p>
+          <p class="text-lg text-on-surface-variant leading-relaxed font-light">
+            Localizada na Avenida Rio Branco, no coração da Zona 04, nos tornamos referência em rodízio de pizza para famílias, amigos e qualquer pessoa que acredita que uma boa noite começa com uma boa mesa.
+          </p>
+        </div>
+
+        <!-- Image Block -->
+        <div class="md:col-span-5 relative group" data-fade-up>
+          <div class="aspect-[3/4] overflow-hidden brutalist-shadow">
+            <img
+              alt="Pizzaiolo preparando pizza artesanal com atenção ao detalhe"
+              class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-110"
+              src="/img/pizzaiolo.svg"
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-primary p-8 hidden md:block brutalist-shadow">
+            <span class="material-symbols-outlined text-on-primary text-5xl" style="font-variation-settings: 'FILL' 1;">local_pizza</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="py-32 px-6 md:px-16 bg-surface overflow-hidden">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row gap-16 items-center">
+
+        <!-- Images -->
+        <div class="w-full md:w-1/2 relative" data-fade-left>
+          <div class="relative z-10 w-4/5 ml-auto brutalist-shadow">
+            <img
+              alt="Ingredientes frescos: tomates orgânicos, manjericão e queijo artesanal"
+              class="w-full aspect-square object-cover"
+              src="/img/ingredientes.svg"
+            />
+          </div>
+          <div class="absolute top-1/2 -left-8 md:-left-12 -translate-y-1/2 z-20 w-3/5 brutalist-shadow">
+            <img
+              alt="Pizzas saindo do forno a lenha com queijo borbulhando"
+              class="w-full aspect-video object-cover"
+              src="/img/forno.svg"
+            />
+          </div>
+        </div>
+
+        <!-- Values list -->
+        <div class="w-full md:w-1/2 space-y-10" data-fade-up>
+          <h2 class="text-5xl md:text-6xl font-headline font-black tracking-tighter leading-none uppercase">
+            A ALMA ESTÁ NOS <span class="text-primary">DETALHES</span>
+          </h2>
+          <div class="space-y-8">
+            <div class="flex gap-6 items-start">
+              <span class="text-primary font-headline font-black text-2xl shrink-0">01</span>
+              <div>
+                <h4 class="text-xl font-bold text-on-surface uppercase mb-2">Ingredientes Selecionados</h4>
+                <p class="text-on-surface-variant font-light">Trabalhamos com fornecedores locais que garantem frescor e qualidade em cada ingrediente usado nas nossas pizzas.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <span class="text-primary font-headline font-black text-2xl shrink-0">02</span>
+              <div>
+                <h4 class="text-xl font-bold text-on-surface uppercase mb-2">Massa Artesanal</h4>
+                <p class="text-on-surface-variant font-light">Nossa massa é preparada diariamente, com fermentação lenta que garante leveza, crocância e aquele sabor inconfundível.</p>
+              </div>
+            </div>
+            <div class="flex gap-6 items-start">
+              <span class="text-primary font-headline font-black text-2xl shrink-0">03</span>
+              <div>
+                <h4 class="text-xl font-bold text-on-surface uppercase mb-2">70+ Sabores Únicos</h4>
+                <p class="text-on-surface-variant font-light">Desenvolvemos cada sabor com cuidado — das tradicionais às criativas, das salgadas às doces, sempre com identidade própria.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Section -->
+  <section class="py-24 bg-surface-container-highest flex justify-center text-center px-6">
+    <div class="max-w-3xl" data-fade-up>
+      <span class="material-symbols-outlined text-primary text-6xl mb-8 block" style="font-variation-settings: 'FILL' 1;">format_quote</span>
+      <p class="text-3xl md:text-5xl font-headline font-black tracking-tight leading-tight italic text-on-surface">
+        "NÃO SERVIMOS APENAS PIZZA. CRIAMOS O MOTIVO PELO QUAL VOCÊ VAI QUERER VOLTAR."
+      </p>
+      <div class="mt-8 flex flex-col items-center">
+        <div class="w-16 h-1 bg-primary mb-4"></div>
+        <span class="uppercase font-headline font-black tracking-widest text-primary-fixed-dim text-sm">Pizzaria Pepperoni — Maringá</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6 bg-surface-container-low">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8" data-fade-up>
+      <div>
+        <h3 class="font-headline font-black text-3xl md:text-4xl text-on-surface uppercase tracking-tighter">
+          Venha nos visitar
+        </h3>
+        <p class="text-on-surface-variant font-medium mt-2">Av. Rio Branco 56, Zona 04 • Maringá-PR • 18h30–22h30</p>
+      </div>
+      <a
+        href="/contato"
+        class="bg-primary text-on-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:scale-105 transition-transform brutalist-shadow shrink-0"
+      >
+        Como Chegar
+      </a>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+
+  const tl = gsap.timeline({ defaults: { ease: 'power4.out' }, delay: 0.3 });
+  tl.fromTo('#sobre-hero h1', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 })
+    .fromTo('#sobre-sub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5');
+</script>

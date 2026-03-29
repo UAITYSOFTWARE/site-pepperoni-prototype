@@ -1,0 +1,349 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Contato" description="Entre em contato com a Pizzaria Pepperoni. Av. Rio Branco 56, Zona 04, Maringá-PR. Tel: (44) 3222-5951. WhatsApp: (44) 99156-6299.">
+
+  <main class="pt-36 pb-20 px-6 md:px-12 max-w-7xl mx-auto">
+
+    <!-- Hero Title -->
+    <section class="mb-20" id="contato-hero">
+      <h1 class="text-6xl md:text-8xl lg:text-9xl font-headline font-black uppercase tracking-tighter leading-[0.85] text-on-surface opacity-0">
+        FALE<br/><span class="text-primary">CONOSCO</span>
+      </h1>
+      <p class="mt-8 text-xl text-on-surface-variant max-w-2xl font-medium opacity-0" id="contato-sub">
+        Dúvidas, reservas ou só quer saber o sabor do dia? Nossa equipe responde rápido pelo WhatsApp.
+      </p>
+    </section>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+
+      <!-- Info Column -->
+      <div class="lg:col-span-5 space-y-10">
+        <div class="bg-surface-container-low p-10 space-y-10 relative overflow-hidden" data-fade-up>
+          <!-- Accent glow -->
+          <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl pointer-events-none"></div>
+
+          <!-- Localização -->
+          <div>
+            <h3 class="font-headline font-black uppercase tracking-tighter text-xl mb-5 text-primary">Localização</h3>
+            <div class="flex items-start gap-4">
+              <span class="material-symbols-outlined text-primary text-3xl shrink-0">location_on</span>
+              <div>
+                <p id="ct-endereco-display" class="text-lg font-semibold leading-tight">Av. Rio Branco, 56</p>
+                <p id="ct-local-display" class="text-on-surface-variant font-medium">Zona 04 · Maringá · Paraná</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Horário -->
+          <div>
+            <h3 class="font-headline font-black uppercase tracking-tighter text-xl mb-5 text-primary">Funcionamento</h3>
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-primary text-2xl shrink-0">schedule</span>
+              <div>
+                <p id="ct-dias-display" class="text-lg font-semibold">Todos os dias</p>
+                <p id="ct-horario-display" class="text-on-surface-variant font-medium">18h30 às 22h30</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contatos -->
+          <div>
+            <h3 class="font-headline font-black uppercase tracking-tighter text-xl mb-5 text-primary">Telefones</h3>
+            <div class="space-y-4">
+              <a id="ct-tel1-link" href="tel:4432225951" class="flex items-center gap-4 group">
+                <span class="material-symbols-outlined text-primary">phone</span>
+                <p id="ct-tel1-display" class="text-lg font-medium group-hover:text-primary transition-colors">(44) 3222-5951</p>
+              </a>
+              <a id="ct-tel2-link" href="tel:4430315951" class="flex items-center gap-4 group">
+                <span class="material-symbols-outlined text-primary">phone</span>
+                <p id="ct-tel2-display" class="text-lg font-medium group-hover:text-primary transition-colors">(44) 3031-5951</p>
+              </a>
+              <a id="ct-whatsapp-link" href="https://wa.me/5544991566299" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+                <span class="material-symbols-outlined text-primary">chat</span>
+                <p id="ct-whatsapp-display" class="text-lg font-medium group-hover:text-primary transition-colors">(44) 99156-6299 — WhatsApp</p>
+              </a>
+              <a id="ct-email-link" href="mailto:financeiro01@pizzariapepperoni.com.br" class="flex items-center gap-4 group">
+                <span class="material-symbols-outlined text-primary">mail</span>
+                <p id="ct-email-display" class="text-base font-medium group-hover:text-primary transition-colors break-all">financeiro01@pizzariapepperoni.com.br</p>
+              </a>
+            </div>
+          </div>
+
+          <!-- Redes sociais -->
+          <div>
+            <h3 class="font-headline font-black uppercase tracking-tighter text-xl mb-5 text-primary">Siga-nos</h3>
+            <div class="flex gap-4">
+              <a
+                href="https://www.instagram.com/pizzariapepperonimga"
+                target="_blank"
+                rel="noopener"
+                class="flex items-center gap-3 bg-surface-container-highest hover:bg-primary hover:text-on-primary text-primary transition-all duration-300 px-4 py-3 font-headline font-black uppercase text-sm tracking-wider"
+              >
+                <span class="material-symbols-outlined text-lg">photo_camera</span>
+                @pizzariapepperonimga
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Map placeholder -->
+        <div class="h-[360px] w-full bg-surface-container overflow-hidden group relative" data-fade-up>
+          <iframe
+            title="Localização Pizzaria Pepperoni"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.2!2d-51.937!3d-23.406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sAv.+Rio+Branco+56+Maring%C3%A1!5e0!3m2!1spt-BR!2sbr!4v1"
+            class="w-full h-full border-0 grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+          <div class="absolute inset-0 bg-primary/5 pointer-events-none mix-blend-multiply"></div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:col-span-7 bg-surface-container-low p-8 md:p-12 relative" data-fade-up>
+        <h2 class="font-headline font-black text-3xl uppercase tracking-tighter mb-8 text-on-surface">
+          Envie uma mensagem
+        </h2>
+
+        <form
+          id="contact-form"
+          class="space-y-8"
+          novalidate
+          aria-label="Formulário de contato"
+        >
+          <!-- Required field notice -->
+          <p class="text-on-surface-variant text-xs font-body">
+            Campos marcados com <span class="text-primary font-black" aria-hidden="true">*</span>
+            <span class="sr-only">asterisco</span> são obrigatórios.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="space-y-2">
+              <label
+                for="campo-nome"
+                class="font-headline font-black uppercase tracking-tighter text-sm text-on-surface-variant"
+              >
+                Nome Completo <span class="text-primary" aria-hidden="true">*</span>
+              </label>
+              <input
+                id="campo-nome"
+                type="text"
+                name="nome"
+                required
+                autocomplete="name"
+                aria-required="true"
+                aria-describedby="nome-error"
+                class="w-full bg-surface-container-highest border-none p-4 focus:ring-2 focus:ring-primary/60 placeholder:text-on-surface/20 text-on-surface font-medium min-h-[52px]"
+                placeholder="Seu nome completo"
+              />
+              <p id="nome-error" class="hidden text-sm text-error font-medium" role="alert"></p>
+            </div>
+            <div class="space-y-2">
+              <label
+                for="campo-telefone"
+                class="font-headline font-black uppercase tracking-tighter text-sm text-on-surface-variant"
+              >
+                Telefone / WhatsApp
+              </label>
+              <input
+                id="campo-telefone"
+                type="tel"
+                name="telefone"
+                autocomplete="tel"
+                aria-describedby="telefone-hint"
+                class="w-full bg-surface-container-highest border-none p-4 focus:ring-2 focus:ring-primary/60 placeholder:text-on-surface/20 text-on-surface font-medium min-h-[52px]"
+                placeholder="(44) 99999-9999"
+              />
+              <p id="telefone-hint" class="text-xs text-on-surface-variant font-body">Para retorno mais rápido.</p>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="campo-assunto"
+              class="font-headline font-black uppercase tracking-tighter text-sm text-on-surface-variant"
+            >
+              Assunto <span class="text-primary" aria-hidden="true">*</span>
+            </label>
+            <select
+              id="campo-assunto"
+              name="assunto"
+              required
+              aria-required="true"
+              class="w-full bg-surface-container-highest border-none p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium appearance-none min-h-[52px]"
+            >
+              <option value="reserva">Reserva de mesa</option>
+              <option value="grupo">Reserva para grupo (10+ pessoas)</option>
+              <option value="cardapio">Dúvidas sobre o cardápio</option>
+              <option value="elogios">Elogios e sugestões</option>
+              <option value="outros">Outros</option>
+            </select>
+          </div>
+
+          <div class="space-y-2">
+            <label
+              for="campo-mensagem"
+              class="font-headline font-black uppercase tracking-tighter text-sm text-on-surface-variant"
+            >
+              Mensagem <span class="text-primary" aria-hidden="true">*</span>
+            </label>
+            <textarea
+              id="campo-mensagem"
+              name="mensagem"
+              rows="5"
+              required
+              aria-required="true"
+              aria-describedby="mensagem-error"
+              class="w-full bg-surface-container-highest border-none p-4 focus:ring-2 focus:ring-primary/60 placeholder:text-on-surface/20 text-on-surface font-medium resize-none"
+              placeholder="Escreva sua mensagem com detalhes..."
+            ></textarea>
+            <p id="mensagem-error" class="hidden text-sm text-error font-medium" role="alert"></p>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-primary text-on-primary py-5 font-headline font-black uppercase tracking-tighter text-xl hover:brightness-110 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 brutalist-shadow flex items-center justify-center gap-3 min-h-[60px]"
+            aria-live="polite"
+          >
+            <span class="material-symbols-outlined" aria-hidden="true">send</span>
+            <span id="btn-label">Enviar Mensagem</span>
+          </button>
+
+          <p
+            id="form-success"
+            class="hidden text-center text-primary font-headline font-black uppercase tracking-wider py-4"
+            role="status"
+            aria-live="polite"
+          >
+            Mensagem enviada! Entraremos em contato em breve.
+          </p>
+        </form>
+
+        <!-- Decorative icon -->
+        <div class="hidden md:block absolute -bottom-6 -right-6 w-28 h-28 opacity-10 pointer-events-none">
+          <span class="material-symbols-outlined text-[112px] text-primary" style="font-variation-settings: 'FILL' 1;">local_pizza</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- WhatsApp CTA bar -->
+    <div class="mt-16 bg-surface-container-high p-8 flex flex-col md:flex-row items-center justify-between gap-6" data-fade-up>
+      <div class="flex items-center gap-4">
+        <span class="material-symbols-outlined text-primary text-4xl">chat</span>
+        <div>
+          <p class="font-headline font-black text-xl uppercase tracking-tighter text-on-surface">Reservas mais rápido pelo WhatsApp</p>
+          <p class="text-on-surface-variant font-medium text-sm">Atendemos todos os dias até as 18h para reservas.</p>
+        </div>
+      </div>
+      <a
+        id="ct-cta-whatsapp"
+        href="https://wa.me/5544991566299"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="bg-primary text-on-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:scale-105 transition-transform brutalist-shadow shrink-0"
+      >
+        (44) 99156-6299
+      </a>
+    </div>
+
+  </main>
+
+</Layout>
+
+<script>
+  import gsap from 'gsap';
+
+  // Hero animation
+  const tl = gsap.timeline({ delay: 0.2, defaults: { ease: 'power4.out' } });
+  tl.fromTo('#contato-hero h1', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 })
+    .fromTo('#contato-sub', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.5');
+
+  // Form with validation and feedback
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const success = document.getElementById('form-success');
+  const btn = document.getElementById('submit-btn') as HTMLButtonElement | null;
+  const btnLabel = document.getElementById('btn-label');
+
+  // Inline validation on blur
+  const nomeInput = document.getElementById('campo-nome') as HTMLInputElement | null;
+  const mensagemInput = document.getElementById('campo-mensagem') as HTMLTextAreaElement | null;
+
+  function showError(id: string, msg: string) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = msg; el.classList.remove('hidden'); }
+  }
+  function clearError(id: string) {
+    const el = document.getElementById(id);
+    if (el) { el.textContent = ''; el.classList.add('hidden'); }
+  }
+
+  nomeInput?.addEventListener('blur', () => {
+    if (!nomeInput.value.trim()) {
+      showError('nome-error', 'Por favor, informe seu nome completo.');
+    } else {
+      clearError('nome-error');
+    }
+  });
+
+  mensagemInput?.addEventListener('blur', () => {
+    if (!mensagemInput.value.trim()) {
+      showError('mensagem-error', 'Por favor, escreva uma mensagem.');
+    } else {
+      clearError('mensagem-error');
+    }
+  });
+
+  // ─── Hydrate from Supabase ───
+  import { getContato } from '../scripts/admin-store';
+  const info = await getContato();
+  if (info) {
+    const setText = (id: string, val: string) => { const el = document.getElementById(id); if (el && val) el.textContent = val; };
+    const setHref = (id: string, val: string) => { const el = document.getElementById(id) as HTMLAnchorElement | null; if (el && val) el.href = val; };
+
+    setText('ct-endereco-display', info.endereco);
+    setText('ct-local-display', `${info.bairro} · ${info.cidade} · ${info.estado}`);
+    setText('ct-dias-display', info.dias);
+    setText('ct-horario-display', info.horario);
+    setText('ct-tel1-display', info.telefone1);
+    setHref('ct-tel1-link', `tel:${info.telefone1.replace(/\D/g, '')}`);
+    setText('ct-tel2-display', info.telefone2);
+    setHref('ct-tel2-link', `tel:${info.telefone2.replace(/\D/g, '')}`);
+    setText('ct-whatsapp-display', `${info.whatsappDisplay} — WhatsApp`);
+    setHref('ct-whatsapp-link', `https://wa.me/${info.whatsapp}`);
+    setText('ct-email-display', info.email);
+    setHref('ct-email-link', `mailto:${info.email}`);
+    setText('ct-cta-whatsapp', info.whatsappDisplay);
+    setHref('ct-cta-whatsapp', `https://wa.me/${info.whatsapp}`);
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let valid = true;
+
+    if (!nomeInput?.value.trim()) {
+      showError('nome-error', 'Por favor, informe seu nome completo.');
+      nomeInput?.focus();
+      valid = false;
+    }
+    if (!mensagemInput?.value.trim()) {
+      showError('mensagem-error', 'Por favor, escreva uma mensagem.');
+      if (valid) mensagemInput?.focus();
+      valid = false;
+    }
+    if (!valid) return;
+
+    if (btn) btn.disabled = true;
+    if (btnLabel) btnLabel.textContent = 'Enviando...';
+
+    setTimeout(() => {
+      if (btnLabel) btnLabel.textContent = 'Enviado!';
+      success?.classList.remove('hidden');
+      gsap.fromTo(success, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4 });
+    }, 800);
+  });
+</script>

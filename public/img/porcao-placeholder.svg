@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#ffffff" rx="8"/>
+  <!-- basket/bowl -->
+  <path d="M100 230 Q110 290 200 290 Q290 290 300 230 Z" fill="#d4a24e" opacity="0.3" stroke="#c4923e" stroke-width="2"/>
+  <rect x="90" y="220" width="220" height="15" rx="5" fill="#c4923e" opacity="0.5"/>
+  <!-- fries -->
+  <rect x="150" y="140" width="12" height="85" rx="3" fill="#f0c040" transform="rotate(-8 156 182)"/>
+  <rect x="170" y="135" width="11" height="90" rx="3" fill="#e8b530" transform="rotate(3 175 180)"/>
+  <rect x="190" y="138" width="12" height="87" rx="3" fill="#f0c040" transform="rotate(-5 196 181)"/>
+  <rect x="210" y="133" width="11" height="92" rx="3" fill="#e8b530" transform="rotate(7 215 179)"/>
+  <rect x="230" y="140" width="12" height="85" rx="3" fill="#f0c040" transform="rotate(-3 236 182)"/>
+  <rect x="135" y="150" width="11" height="75" rx="3" fill="#e8b530" transform="rotate(-12 140 187)"/>
+  <rect x="245" y="148" width="11" height="77" rx="3" fill="#f0c040" transform="rotate(10 250 186)"/>
+  <text x="200" y="345" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#999">PORÇÃO</text>
+  <text x="200" y="370" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#bbb">Pizzaria Pepperoni</text>
+</svg>

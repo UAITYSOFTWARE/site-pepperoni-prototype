@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ═══════════════════════════════════════════
+   COLOR TOKENS — Light (default) & Dark
+   ═══════════════════════════════════════════ */
+
+:root {
+  /* ── Light Mode ── */
+  --color-primary:                #DE3635;
+  --color-on-primary:             #ffffff;
+  --color-primary-container:      #ffdad6;
+  --color-on-primary-container:   #93000a;
+  --color-primary-fixed:          #ffcdd2;
+  --color-primary-fixed-dim:      #ef5350;
+
+  --color-secondary:              #c7b700;
+  --color-on-secondary:           #ffffff;
+  --color-secondary-container:    #fff9c4;
+  --color-on-secondary-container: #3d3800;
+
+  --color-tertiary:               #505050;
+  --color-on-tertiary:            #ffffff;
+  --color-tertiary-container:     #e8e8e8;
+  --color-on-tertiary-container:  #333333;
+
+  --color-surface:                #fafafa;
+  --color-surface-dim:            #e0e0e0;
+  --color-surface-bright:         #ffffff;
+  --color-surface-container-lowest:  #ffffff;
+  --color-surface-container-low:     #f5f5f5;
+  --color-surface-container:         #eeeeee;
+  --color-surface-container-high:    #e0e0e0;
+  --color-surface-container-highest: #d6d6d6;
+  --color-surface-variant:        #e0e0e0;
+  --color-surface-tint:           #DE3635;
+
+  --color-on-surface:             #0a0a0a;
+  --color-on-surface-variant:     #555555;
+
+  --color-background:             #fafafa;
+  --color-on-background:          #0a0a0a;
+
+  --color-outline:                #888888;
+  --color-outline-variant:        #cccccc;
+
+  --color-inverse-surface:        #1a1a1a;
+  --color-inverse-on-surface:     #f5f5f5;
+  --color-inverse-primary:        #ff8a80;
+
+  --color-error:                  #b3261e;
+  --color-on-error:               #ffffff;
+  --color-error-container:        #ffdad6;
+  --color-on-error-container:     #410002;
+
+  --shadow-color:                 rgba(0, 0, 0, 0.12);
+  --focus-ring:                   #DE3635;
+  --text-stroke-color:            #DE3635;
+  --text-outline-color:           rgba(0, 0, 0, 0.15);
+  --swiper-bullet:                #888888;
+  --swiper-active:                #DE3635;
+}
+
+.dark {
+  /* ── Dark Mode ── */
+  --color-primary:                #DE3635;
+  --color-on-primary:             #ffffff;
+  --color-primary-container:      #3a0a0a;
+  --color-on-primary-container:   #ff8a80;
+  --color-primary-fixed:          #ffcdd2;
+  --color-primary-fixed-dim:      #ef5350;
+
+  --color-secondary:              #EDDE3C;
+  --color-on-secondary:           #1a1800;
+  --color-secondary-container:    #3d3800;
+  --color-on-secondary-container: #fff176;
+
+  --color-tertiary:               #e0e0e0;
+  --color-on-tertiary:            #1a1a1a;
+  --color-tertiary-container:     #2a2a2a;
+  --color-on-tertiary-container:  #bdbdbd;
+
+  --color-surface:                #0a0a0a;
+  --color-surface-dim:            #0a0a0a;
+  --color-surface-bright:         #3a3a3a;
+  --color-surface-container-lowest:  #050505;
+  --color-surface-container-low:     #141414;
+  --color-surface-container:         #1e1e1e;
+  --color-surface-container-high:    #282828;
+  --color-surface-container-highest: #333333;
+  --color-surface-variant:        #3a3a3a;
+  --color-surface-tint:           #DE3635;
+
+  --color-on-surface:             #f5f5f5;
+  --color-on-surface-variant:     #b0b0b0;
+
+  --color-background:             #0a0a0a;
+  --color-on-background:          #f5f5f5;
+
+  --color-outline:                #757575;
+  --color-outline-variant:        #424242;
+
+  --color-inverse-surface:        #e0e0e0;
+  --color-inverse-on-surface:     #1a1a1a;
+  --color-inverse-primary:        #b71c1c;
+
+  --color-error:                  #ff6b6b;
+  --color-on-error:               #1a0000;
+  --color-error-container:        #93000a;
+  --color-on-error-container:     #ffdad6;
+
+  --shadow-color:                 rgba(0, 0, 0, 0.5);
+  --focus-ring:                   #DE3635;
+  --text-stroke-color:            #DE3635;
+  --text-outline-color:           rgba(255, 255, 255, 0.2);
+  --swiper-bullet:                #b0b0b0;
+  --swiper-active:                #DE3635;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-surface);
+    color: var(--color-on-surface);
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  ::selection {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  /* Skip to content — accessibility */
+  .skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 9999;
+    @apply font-headline font-black uppercase tracking-tighter px-6 py-3;
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* Cursor pointer on all interactive elements */
+  button,
+  [role="button"],
+  a[href],
+  label[for],
+  select {
+    cursor: pointer;
+  }
+
+  /* Focus rings — keyboard navigation */
+  *:focus-visible {
+    outline: 2px solid var(--focus-ring);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  /* Slightly rounded buttons */
+  button,
+  a.bg-primary,
+  a.bg-on-primary,
+  a.bg-on-surface,
+  a.border-2,
+  a.border-4 {
+    border-radius: 0.5rem;
+  }
+
+  /* Respect reduced motion — disable all GSAP/transition effects */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer utilities {
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    line-height: 1;
+    vertical-align: middle;
+  }
+
+  .text-outline-premium {
+    -webkit-text-stroke: 1px var(--text-outline-color);
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    color: transparent;
+  }
+
+  .brutalist-shadow {
+    box-shadow: 0 20px 40px var(--shadow-color);
+  }
+
+  /* Swiper overrides */
+  .swiper-pagination-bullet {
+    background: var(--swiper-bullet) !important;
+    opacity: 0.4 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--swiper-active) !important;
+    opacity: 1 !important;
+  }
+  .swiper-button-next,
+  .swiper-button-prev {
+    color: var(--swiper-active) !important;
+  }
+}

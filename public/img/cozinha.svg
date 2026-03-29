@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500">
+  <rect width="800" height="500" fill="#1a1a1a"/>
+  <!-- Oven glow -->
+  <rect x="250" y="150" width="300" height="200" rx="10" fill="#2a2a2a" stroke="#333" stroke-width="2"/>
+  <rect x="270" y="170" width="260" height="140" rx="6" fill="#1e1e1e"/>
+  <ellipse cx="400" cy="260" rx="100" ry="30" fill="#DE3635" opacity="0.3"/>
+  <ellipse cx="400" cy="260" rx="60" ry="18" fill="#ff6b35" opacity="0.4"/>
+  <!-- Flames -->
+  <ellipse cx="370" cy="255" rx="8" ry="20" fill="#ff9800" opacity="0.6"/>
+  <ellipse cx="400" cy="250" rx="10" ry="25" fill="#ff9800" opacity="0.7"/>
+  <ellipse cx="430" cy="255" rx="8" ry="20" fill="#ff9800" opacity="0.6"/>
+  <!-- Counter -->
+  <rect x="0" y="380" width="800" height="120" fill="#333"/>
+  <rect x="0" y="375" width="800" height="10" fill="#444"/>
+  <!-- Utensils -->
+  <rect x="600" y="100" width="4" height="260" fill="#666" rx="2"/>
+  <rect x="620" y="120" width="4" height="240" fill="#666" rx="2"/>
+  <rect x="640" y="110" width="4" height="250" fill="#666" rx="2"/>
+  <circle cx="602" y="95" r="12" fill="none" stroke="#666" stroke-width="3" cy="95"/>
+  <text x="400" y="450" text-anchor="middle" font-family="sans-serif" font-size="20" font-weight="700" fill="#888">NOSSA COZINHA</text>
+</svg>

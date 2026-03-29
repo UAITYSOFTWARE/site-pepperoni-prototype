@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 530" width="400" height="530">
+  <rect width="400" height="530" fill="#ffffff" rx="8"/>
+  <!-- Chef silhouette -->
+  <circle cx="200" cy="140" r="50" fill="#e0e0e0"/>
+  <!-- Hat -->
+  <rect x="160" y="80" width="80" height="30" rx="4" fill="#f5f5f5" stroke="#ddd" stroke-width="2"/>
+  <rect x="150" y="105" width="100" height="10" rx="3" fill="#f5f5f5" stroke="#ddd" stroke-width="2"/>
+  <!-- Body/Apron -->
+  <path d="M140 190 Q140 170 160 165 L240 165 Q260 170 260 190 L270 400 L130 400 Z" fill="#e8e8e8"/>
+  <rect x="165" y="200" width="70" height="180" rx="4" fill="#DE3635" opacity="0.15"/>
+  <!-- Arms with dough -->
+  <path d="M140 220 Q100 230 90 260 Q85 280 120 280" fill="none" stroke="#e0e0e0" stroke-width="20" stroke-linecap="round"/>
+  <path d="M260 220 Q300 230 310 260 Q315 280 280 280" fill="none" stroke="#e0e0e0" stroke-width="20" stroke-linecap="round"/>
+  <!-- Pizza dough being tossed -->
+  <ellipse cx="200" cy="50" rx="70" ry="15" fill="#f5e6c8" stroke="#e0c9a0" stroke-width="3" opacity="0.8"/>
+  <text x="200" y="470" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#999">PREPARO ARTESANAL</text>
+  <text x="200" y="495" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#bbb">Pizzaria Pepperoni</text>
+</svg>

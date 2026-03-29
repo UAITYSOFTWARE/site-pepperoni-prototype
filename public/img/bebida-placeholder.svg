@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="400" height="400">
+  <rect width="400" height="400" fill="#ffffff" rx="8"/>
+  <!-- glass -->
+  <path d="M150 120 L145 290 Q145 310 200 310 Q255 310 255 290 L250 120 Z" fill="#e8f4f8" stroke="#b0d4e8" stroke-width="3" opacity="0.8"/>
+  <!-- liquid -->
+  <path d="M152 160 L148 285 Q148 305 200 305 Q252 305 252 285 L248 160 Z" fill="#f39c12" opacity="0.5"/>
+  <!-- ice cubes -->
+  <rect x="170" y="170" width="25" height="20" rx="4" fill="#fff" opacity="0.6" transform="rotate(10 182 180)"/>
+  <rect x="205" y="185" width="22" height="18" rx="4" fill="#fff" opacity="0.5" transform="rotate(-8 216 194)"/>
+  <!-- straw -->
+  <rect x="218" y="90" width="6" height="200" rx="3" fill="#e74c3c" transform="rotate(8 221 190)"/>
+  <!-- bubbles -->
+  <circle cx="180" cy="240" r="5" fill="#fff" opacity="0.4"/>
+  <circle cx="210" cy="260" r="4" fill="#fff" opacity="0.35"/>
+  <circle cx="190" cy="270" r="6" fill="#fff" opacity="0.3"/>
+  <!-- lemon -->
+  <ellipse cx="240" cy="158" rx="22" ry="10" fill="#f1c40f" opacity="0.8" transform="rotate(30 240 158)"/>
+  <text x="200" y="345" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#999">BEBIDA</text>
+  <text x="200" y="370" text-anchor="middle" font-family="sans-serif" font-size="12" fill="#bbb">Pizzaria Pepperoni</text>
+</svg>

@@ -1,0 +1,695 @@
+---
+import AdminLayout from '../layouts/AdminLayout.astro';
+---
+
+<AdminLayout title="Painel Admin">
+
+  <!-- ==================== LOGIN ==================== -->
+  <div id="admin-login" class="min-h-screen flex items-center justify-center px-6">
+    <div class="w-full max-w-md bg-surface-container p-10 space-y-8">
+      <div class="text-center">
+        <span class="material-symbols-outlined text-primary text-5xl mb-4 block" style="font-variation-settings: 'FILL' 1;">local_pizza</span>
+        <h1 class="font-headline font-black text-3xl uppercase tracking-tighter text-on-surface">Admin</h1>
+        <p class="text-on-surface-variant text-sm mt-2 font-medium">Pizzaria Pepperoni — Painel de Gestão</p>
+      </div>
+
+      <form id="login-form" class="space-y-6" novalidate>
+        <div class="space-y-2">
+          <label for="login-user" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">E-mail</label>
+          <input
+            id="login-user"
+            type="email"
+            autocomplete="email"
+            required
+            class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none min-h-[52px]"
+            placeholder="admin@pizzariapepperoni.com.br"
+          />
+        </div>
+        <div class="space-y-2">
+          <label for="login-pass" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Senha</label>
+          <input
+            id="login-pass"
+            type="password"
+            autocomplete="current-password"
+            required
+            class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none min-h-[52px]"
+            placeholder="••••••••"
+          />
+        </div>
+
+        <p id="login-error" class="hidden text-error text-sm font-medium text-center" role="alert"></p>
+
+        <button
+          type="submit"
+          class="w-full bg-primary text-on-primary py-4 font-headline font-black uppercase tracking-tighter text-lg hover:brightness-110 transition-all brutalist-shadow flex items-center justify-center gap-2 min-h-[56px]"
+        >
+          <span class="material-symbols-outlined">login</span>
+          Entrar
+        </button>
+      </form>
+
+      <a href="/" class="block text-center text-on-surface-variant text-sm hover:text-primary transition-colors font-medium">
+        ← Voltar ao site
+      </a>
+    </div>
+  </div>
+
+  <!-- ==================== DASHBOARD ==================== -->
+  <div id="admin-dashboard" class="hidden min-h-screen">
+
+    <!-- Top Bar -->
+    <header class="bg-surface-container-low px-6 py-4 flex items-center justify-between sticky top-0 z-50">
+      <div class="flex items-center gap-3">
+        <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">local_pizza</span>
+        <span class="font-headline font-black text-lg uppercase tracking-tighter text-primary">Admin</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <button id="btn-export" class="text-on-surface-variant hover:text-primary transition-colors p-2" title="Exportar dados">
+          <span class="material-symbols-outlined">download</span>
+        </button>
+        <label class="text-on-surface-variant hover:text-primary transition-colors p-2 cursor-pointer" title="Importar dados">
+          <span class="material-symbols-outlined">upload</span>
+          <input type="file" id="btn-import" accept=".json" class="hidden" />
+        </label>
+        <button id="btn-logout" class="text-on-surface-variant hover:text-error transition-colors p-2" title="Sair">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="flex flex-col md:flex-row min-h-[calc(100vh-64px)]">
+
+      <!-- Sidebar -->
+      <nav class="md:w-64 bg-surface-container-low p-4 md:p-6 flex md:flex-col gap-2 overflow-x-auto md:overflow-visible shrink-0">
+        <button data-tab="cardapio" class="admin-tab active flex items-center gap-3 px-5 py-4 font-headline font-black uppercase text-sm tracking-wider transition-all w-full text-left">
+          <span class="material-symbols-outlined text-lg">restaurant_menu</span>
+          <span class="hidden md:inline">Cardápio</span>
+        </button>
+        <button data-tab="promocoes" class="admin-tab flex items-center gap-3 px-5 py-4 font-headline font-black uppercase text-sm tracking-wider transition-all w-full text-left">
+          <span class="material-symbols-outlined text-lg">sell</span>
+          <span class="hidden md:inline">Promoções</span>
+        </button>
+        <button data-tab="contato" class="admin-tab flex items-center gap-3 px-5 py-4 font-headline font-black uppercase text-sm tracking-wider transition-all w-full text-left">
+          <span class="material-symbols-outlined text-lg">contact_phone</span>
+          <span class="hidden md:inline">Contato</span>
+        </button>
+      </nav>
+
+      <!-- Main Content -->
+      <main class="flex-1 p-6 md:p-10 overflow-y-auto">
+
+        <!-- ===== CARDÁPIO ===== -->
+        <section id="tab-cardapio" class="admin-section">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <h2 class="font-headline font-black text-3xl uppercase tracking-tighter">Cardápio</h2>
+            <button id="btn-add-item" class="bg-primary text-on-primary px-6 py-3 font-headline font-black uppercase text-sm tracking-wider flex items-center gap-2 hover:brightness-110 transition-all">
+              <span class="material-symbols-outlined text-lg">add</span>
+              Novo Item
+            </button>
+          </div>
+
+          <!-- Add/Edit Form (hidden by default) -->
+          <div id="form-item" class="hidden bg-surface-container p-8 mb-8 space-y-6">
+            <h3 id="form-item-title" class="font-headline font-black text-xl uppercase tracking-tighter text-primary">Novo Item</h3>
+            <input type="hidden" id="item-id" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="item-titulo" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Título *</label>
+                <input id="item-titulo" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" placeholder="Nome da pizza ou prato" />
+              </div>
+              <div class="space-y-2">
+                <label for="item-categoria" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Categoria *</label>
+                <select id="item-categoria" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none appearance-none">
+                  <option value="salgadas">Pizza Salgada</option>
+                  <option value="doces">Pizza Doce</option>
+                  <option value="massas">Massa</option>
+                  <option value="porcoes">Porção</option>
+                </select>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label for="item-descricao" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Descrição *</label>
+              <textarea id="item-descricao" rows="3" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none resize-none" placeholder="Ingredientes e descrição do prato"></textarea>
+            </div>
+            <div class="space-y-2">
+              <label for="item-imagem" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">URL da Imagem</label>
+              <input id="item-imagem" type="url" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" placeholder="https://exemplo.com/imagem.jpg" />
+              <div id="item-img-preview" class="hidden mt-3">
+                <img id="item-img-tag" class="w-32 h-32 object-cover bg-surface-container-highest" alt="Preview" />
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <button id="btn-save-item" class="bg-primary text-on-primary px-8 py-3 font-headline font-black uppercase text-sm tracking-wider flex items-center gap-2 hover:brightness-110 transition-all">
+                <span class="material-symbols-outlined text-lg">save</span>
+                Salvar
+              </button>
+              <button id="btn-cancel-item" class="bg-surface-container-high text-on-surface px-8 py-3 font-headline font-black uppercase text-sm tracking-wider hover:bg-surface-container-highest transition-colors">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+          <!-- Items List -->
+          <div id="items-list" class="space-y-3"></div>
+          <p id="items-empty" class="hidden text-center text-on-surface-variant py-16 font-medium">
+            Nenhum item cadastrado. Clique em <strong class="text-primary">Novo Item</strong> para começar.
+          </p>
+        </section>
+
+        <!-- ===== PROMOÇÕES ===== -->
+        <section id="tab-promocoes" class="admin-section hidden">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8">
+            <h2 class="font-headline font-black text-3xl uppercase tracking-tighter">Promoções</h2>
+            <button id="btn-add-promo" class="bg-primary text-on-primary px-6 py-3 font-headline font-black uppercase text-sm tracking-wider flex items-center gap-2 hover:brightness-110 transition-all">
+              <span class="material-symbols-outlined text-lg">add</span>
+              Nova Promoção
+            </button>
+          </div>
+
+          <!-- Add/Edit Form -->
+          <div id="form-promo" class="hidden bg-surface-container p-8 mb-8 space-y-6">
+            <h3 id="form-promo-title" class="font-headline font-black text-xl uppercase tracking-tighter text-primary">Nova Promoção</h3>
+            <input type="hidden" id="promo-id" />
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="space-y-2">
+                <label for="promo-titulo" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Título *</label>
+                <input id="promo-titulo" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" placeholder="Nome da promoção" />
+              </div>
+              <div class="space-y-2">
+                <label for="promo-icone" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Ícone (Material Symbol)</label>
+                <input id="promo-icone" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" placeholder="local_pizza, cake, groups..." />
+                <p class="text-on-surface-variant text-xs">Veja os ícones em fonts.google.com/icons</p>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label for="promo-descricao" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Descrição *</label>
+              <textarea id="promo-descricao" rows="3" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none resize-none" placeholder="Detalhes da promoção"></textarea>
+            </div>
+            <div class="space-y-2">
+              <label for="promo-imagem" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">URL da Imagem</label>
+              <input id="promo-imagem" type="url" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" placeholder="https://exemplo.com/imagem.jpg" />
+            </div>
+            <div class="flex gap-3">
+              <button id="btn-save-promo" class="bg-primary text-on-primary px-8 py-3 font-headline font-black uppercase text-sm tracking-wider flex items-center gap-2 hover:brightness-110 transition-all">
+                <span class="material-symbols-outlined text-lg">save</span>
+                Salvar
+              </button>
+              <button id="btn-cancel-promo" class="bg-surface-container-high text-on-surface px-8 py-3 font-headline font-black uppercase text-sm tracking-wider hover:bg-surface-container-highest transition-colors">
+                Cancelar
+              </button>
+            </div>
+          </div>
+
+          <!-- Promos List -->
+          <div id="promos-list" class="space-y-3"></div>
+          <p id="promos-empty" class="hidden text-center text-on-surface-variant py-16 font-medium">
+            Nenhuma promoção cadastrada. Clique em <strong class="text-primary">Nova Promoção</strong> para começar.
+          </p>
+        </section>
+
+        <!-- ===== CONTATO ===== -->
+        <section id="tab-contato" class="admin-section hidden">
+          <h2 class="font-headline font-black text-3xl uppercase tracking-tighter mb-8">Informações de Contato</h2>
+
+          <form id="form-contato" class="bg-surface-container p-8 space-y-8" novalidate>
+            <div>
+              <h3 class="font-headline font-black text-lg uppercase tracking-tighter text-primary mb-6">Endereço</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ct-endereco" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Endereço</label>
+                  <input id="ct-endereco" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="Av. Rio Branco, 56" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-bairro" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Bairro</label>
+                  <input id="ct-bairro" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="Zona 04" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-cidade" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Cidade</label>
+                  <input id="ct-cidade" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="Maringá" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-estado" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Estado</label>
+                  <input id="ct-estado" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="Paraná" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-headline font-black text-lg uppercase tracking-tighter text-primary mb-6">Telefones</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ct-tel1" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Telefone 1</label>
+                  <input id="ct-tel1" type="tel" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="(44) 3222-5951" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-tel2" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Telefone 2</label>
+                  <input id="ct-tel2" type="tel" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="(44) 3031-5951" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-whatsapp" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">WhatsApp (número completo)</label>
+                  <input id="ct-whatsapp" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="5544991566299" />
+                  <p class="text-on-surface-variant text-xs">Formato: 55 + DDD + número (sem espaços)</p>
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-whatsapp-display" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">WhatsApp (exibição)</label>
+                  <input id="ct-whatsapp-display" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="(44) 99156-6299" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-headline font-black text-lg uppercase tracking-tighter text-primary mb-6">Online</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ct-email" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">E-mail</label>
+                  <input id="ct-email" type="email" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="financeiro01@pizzariapepperoni.com.br" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-instagram" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Instagram (URL completa)</label>
+                  <input id="ct-instagram" type="url" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="https://www.instagram.com/pizzariapepperonimga" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-instagram-handle" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Instagram (@handle)</label>
+                  <input id="ct-instagram-handle" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="@pizzariapepperonimga" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="font-headline font-black text-lg uppercase tracking-tighter text-primary mb-6">Horário de Funcionamento</h3>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-2">
+                  <label for="ct-dias" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Dias</label>
+                  <input id="ct-dias" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="Todos os dias" />
+                </div>
+                <div class="space-y-2">
+                  <label for="ct-horario" class="font-headline font-black uppercase tracking-tighter text-xs text-on-surface-variant">Horário</label>
+                  <input id="ct-horario" type="text" class="w-full bg-surface-container-highest p-4 focus:ring-2 focus:ring-primary/60 text-on-surface font-medium border-none" value="18h30 às 22h30" />
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4 pt-4">
+              <button
+                type="submit"
+                class="bg-primary text-on-primary px-10 py-4 font-headline font-black uppercase text-sm tracking-wider flex items-center gap-2 hover:brightness-110 transition-all brutalist-shadow"
+              >
+                <span class="material-symbols-outlined text-lg">save</span>
+                Salvar Contato
+              </button>
+              <span id="contato-saved" class="hidden text-primary font-headline font-black text-sm uppercase tracking-wider">Salvo!</span>
+            </div>
+          </form>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+</AdminLayout>
+
+<style>
+  .admin-tab.active {
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+  .admin-tab:not(.active) {
+    background-color: var(--color-surface-container);
+    color: var(--color-on-surface);
+  }
+  .admin-tab:not(.active):hover {
+    background-color: var(--color-surface-container-high);
+  }
+</style>
+
+<script>
+  import {
+    signIn, signOut, getSession,
+    getCardapio, addCardapioItem, updateCardapioItem, deleteCardapioItem,
+    getPromocoes, addPromocao, updatePromocao, deletePromocao,
+    getContato, upsertContato,
+    exportAll, importAll,
+    type MenuItem, type Promocao
+  } from '../scripts/admin-store';
+
+  // ─── DOM refs ───
+  const loginScreen = document.getElementById('admin-login')!;
+  const dashboard = document.getElementById('admin-dashboard')!;
+
+  // ─── showDashboard ───
+  async function showDashboard() {
+    loginScreen.classList.add('hidden');
+    dashboard.classList.remove('hidden');
+    await renderItems();
+    await renderPromos();
+    await loadContato();
+  }
+
+  // ─── Login (Supabase Auth) ───
+  document.getElementById('login-form')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = (document.getElementById('login-user') as HTMLInputElement).value.trim();
+    const pass = (document.getElementById('login-pass') as HTMLInputElement).value;
+    const errorEl = document.getElementById('login-error')!;
+
+    const { user, error } = await signIn(email, pass);
+    if (error || !user) {
+      errorEl.textContent = error?.message || 'E-mail ou senha incorretos.';
+      errorEl.classList.remove('hidden');
+    } else {
+      errorEl.classList.add('hidden');
+      await showDashboard();
+    }
+  });
+
+  // ─── Logout ───
+  document.getElementById('btn-logout')!.addEventListener('click', async () => {
+    await signOut();
+    location.reload();
+  });
+
+  // ─── Tab switching ───
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.admin-tab');
+  const sections = document.querySelectorAll<HTMLElement>('.admin-section');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      sections.forEach(s => s.classList.add('hidden'));
+      document.getElementById(`tab-${tab.dataset.tab}`)!.classList.remove('hidden');
+    });
+  });
+
+  // ═══════════════════════════════════════
+  //  CARDÁPIO CRUD
+  // ═══════════════════════════════════════
+  const formItem = document.getElementById('form-item')!;
+  const itemsList = document.getElementById('items-list')!;
+  const itemsEmpty = document.getElementById('items-empty')!;
+
+  const CATEGORIAS: Record<string, string> = {
+    salgadas: 'Pizza Salgada',
+    doces: 'Pizza Doce',
+    massas: 'Massa',
+    porcoes: 'Porção',
+    bebidas: 'Bebida',
+  };
+
+  async function renderItems() {
+    const items = await getCardapio();
+    if (items.length === 0) {
+      itemsList.innerHTML = '';
+      itemsEmpty.classList.remove('hidden');
+      return;
+    }
+    itemsEmpty.classList.add('hidden');
+
+    const grouped: Record<string, MenuItem[]> = {};
+    items.forEach(item => {
+      if (!grouped[item.categoria]) grouped[item.categoria] = [];
+      grouped[item.categoria].push(item);
+    });
+
+    let html = '';
+    for (const [cat, catItems] of Object.entries(grouped)) {
+      html += `<div class="mb-6">
+        <h4 class="font-headline font-black text-sm uppercase tracking-widest text-primary mb-3">${CATEGORIAS[cat] || cat}</h4>`;
+      catItems.forEach(item => {
+        html += `
+        <div class="flex items-center gap-4 bg-surface-container-low p-4 mb-2 group hover:bg-surface-container transition-colors">
+          ${item.imagem_url
+            ? `<img src="${esc(item.imagem_url)}" alt="${esc(item.titulo)}" class="w-14 h-14 object-cover shrink-0 bg-surface-container-highest" />`
+            : `<div class="w-14 h-14 bg-surface-container-highest flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-surface-variant">image</span></div>`
+          }
+          <div class="flex-1 min-w-0">
+            <p class="font-headline font-bold text-on-surface uppercase text-sm truncate">${esc(item.titulo)}</p>
+            <p class="text-on-surface-variant text-xs truncate">${esc(item.descricao)}</p>
+          </div>
+          <div class="flex gap-1 shrink-0">
+            <button onclick="window._editItem('${item.id}')" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Editar">
+              <span class="material-symbols-outlined text-lg">edit</span>
+            </button>
+            <button onclick="window._deleteItem('${item.id}')" class="p-2 text-on-surface-variant hover:text-error transition-colors" title="Excluir">
+              <span class="material-symbols-outlined text-lg">delete</span>
+            </button>
+          </div>
+        </div>`;
+      });
+      html += '</div>';
+    }
+    itemsList.innerHTML = html;
+  }
+
+  function resetItemForm() {
+    formItem.classList.add('hidden');
+    (document.getElementById('item-id') as HTMLInputElement).value = '';
+    (document.getElementById('item-titulo') as HTMLInputElement).value = '';
+    (document.getElementById('item-descricao') as HTMLTextAreaElement).value = '';
+    (document.getElementById('item-imagem') as HTMLInputElement).value = '';
+    (document.getElementById('item-categoria') as HTMLSelectElement).value = 'salgadas';
+    document.getElementById('item-img-preview')!.classList.add('hidden');
+    document.getElementById('form-item-title')!.textContent = 'Novo Item';
+  }
+
+  document.getElementById('btn-add-item')!.addEventListener('click', () => {
+    resetItemForm();
+    formItem.classList.remove('hidden');
+    (document.getElementById('item-titulo') as HTMLInputElement).focus();
+  });
+
+  document.getElementById('btn-cancel-item')!.addEventListener('click', resetItemForm);
+
+  document.getElementById('item-imagem')!.addEventListener('input', () => {
+    const url = (document.getElementById('item-imagem') as HTMLInputElement).value.trim();
+    const preview = document.getElementById('item-img-preview')!;
+    const imgTag = document.getElementById('item-img-tag') as HTMLImageElement;
+    if (url) { imgTag.src = url; preview.classList.remove('hidden'); }
+    else { preview.classList.add('hidden'); }
+  });
+
+  document.getElementById('btn-save-item')!.addEventListener('click', async () => {
+    const id = (document.getElementById('item-id') as HTMLInputElement).value;
+    const titulo = (document.getElementById('item-titulo') as HTMLInputElement).value.trim();
+    const descricao = (document.getElementById('item-descricao') as HTMLTextAreaElement).value.trim();
+    const imagem_url = (document.getElementById('item-imagem') as HTMLInputElement).value.trim();
+    const categoria = (document.getElementById('item-categoria') as HTMLSelectElement).value as MenuItem['categoria'];
+
+    if (!titulo || !descricao) { alert('Preencha pelo menos o título e a descrição.'); return; }
+
+    if (id) {
+      await updateCardapioItem(id, { titulo, descricao, imagem_url, categoria });
+    } else {
+      await addCardapioItem({ titulo, descricao, imagem_url, categoria });
+    }
+    resetItemForm();
+    await renderItems();
+  });
+
+  (window as any)._editItem = async (id: string) => {
+    const items = await getCardapio();
+    const item = items.find(i => i.id === id);
+    if (!item) return;
+    formItem.classList.remove('hidden');
+    document.getElementById('form-item-title')!.textContent = 'Editar Item';
+    (document.getElementById('item-id') as HTMLInputElement).value = item.id!;
+    (document.getElementById('item-titulo') as HTMLInputElement).value = item.titulo;
+    (document.getElementById('item-descricao') as HTMLTextAreaElement).value = item.descricao;
+    (document.getElementById('item-imagem') as HTMLInputElement).value = item.imagem_url;
+    (document.getElementById('item-categoria') as HTMLSelectElement).value = item.categoria;
+    if (item.imagem_url) {
+      (document.getElementById('item-img-tag') as HTMLImageElement).src = item.imagem_url;
+      document.getElementById('item-img-preview')!.classList.remove('hidden');
+    }
+    (document.getElementById('item-titulo') as HTMLInputElement).focus();
+  };
+
+  (window as any)._deleteItem = async (id: string) => {
+    if (!confirm('Tem certeza que deseja excluir este item?')) return;
+    await deleteCardapioItem(id);
+    await renderItems();
+  };
+
+  // ═══════════════════════════════════════
+  //  PROMOÇÕES CRUD
+  // ═══════════════════════════════════════
+  const formPromo = document.getElementById('form-promo')!;
+  const promosList = document.getElementById('promos-list')!;
+  const promosEmpty = document.getElementById('promos-empty')!;
+
+  async function renderPromos() {
+    const promos = await getPromocoes();
+    if (promos.length === 0) {
+      promosList.innerHTML = '';
+      promosEmpty.classList.remove('hidden');
+      return;
+    }
+    promosEmpty.classList.add('hidden');
+
+    promosList.innerHTML = promos.map(p => `
+      <div class="flex items-center gap-4 bg-surface-container-low p-4 group hover:bg-surface-container transition-colors">
+        <div class="w-14 h-14 bg-surface-container-highest flex items-center justify-center shrink-0">
+          <span class="material-symbols-outlined text-primary text-2xl">${esc(p.icone || 'sell')}</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <p class="font-headline font-bold text-on-surface uppercase text-sm truncate">${esc(p.titulo)}</p>
+          <p class="text-on-surface-variant text-xs truncate">${esc(p.descricao)}</p>
+        </div>
+        <div class="flex gap-1 shrink-0">
+          <button onclick="window._editPromo('${p.id}')" class="p-2 text-on-surface-variant hover:text-primary transition-colors" title="Editar">
+            <span class="material-symbols-outlined text-lg">edit</span>
+          </button>
+          <button onclick="window._deletePromo('${p.id}')" class="p-2 text-on-surface-variant hover:text-error transition-colors" title="Excluir">
+            <span class="material-symbols-outlined text-lg">delete</span>
+          </button>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function resetPromoForm() {
+    formPromo.classList.add('hidden');
+    (document.getElementById('promo-id') as HTMLInputElement).value = '';
+    (document.getElementById('promo-titulo') as HTMLInputElement).value = '';
+    (document.getElementById('promo-descricao') as HTMLTextAreaElement).value = '';
+    (document.getElementById('promo-icone') as HTMLInputElement).value = '';
+    (document.getElementById('promo-imagem') as HTMLInputElement).value = '';
+    document.getElementById('form-promo-title')!.textContent = 'Nova Promoção';
+  }
+
+  document.getElementById('btn-add-promo')!.addEventListener('click', () => {
+    resetPromoForm();
+    formPromo.classList.remove('hidden');
+    (document.getElementById('promo-titulo') as HTMLInputElement).focus();
+  });
+
+  document.getElementById('btn-cancel-promo')!.addEventListener('click', resetPromoForm);
+
+  document.getElementById('btn-save-promo')!.addEventListener('click', async () => {
+    const id = (document.getElementById('promo-id') as HTMLInputElement).value;
+    const titulo = (document.getElementById('promo-titulo') as HTMLInputElement).value.trim();
+    const descricao = (document.getElementById('promo-descricao') as HTMLTextAreaElement).value.trim();
+    const icone = (document.getElementById('promo-icone') as HTMLInputElement).value.trim() || 'sell';
+    const imagem_url = (document.getElementById('promo-imagem') as HTMLInputElement).value.trim();
+
+    if (!titulo || !descricao) { alert('Preencha pelo menos o título e a descrição.'); return; }
+
+    if (id) {
+      await updatePromocao(id, { titulo, descricao, icone, imagem_url });
+    } else {
+      await addPromocao({ titulo, descricao, icone, imagem_url });
+    }
+    resetPromoForm();
+    await renderPromos();
+  });
+
+  (window as any)._editPromo = async (id: string) => {
+    const promos = await getPromocoes();
+    const promo = promos.find(p => p.id === id);
+    if (!promo) return;
+    formPromo.classList.remove('hidden');
+    document.getElementById('form-promo-title')!.textContent = 'Editar Promoção';
+    (document.getElementById('promo-id') as HTMLInputElement).value = promo.id!;
+    (document.getElementById('promo-titulo') as HTMLInputElement).value = promo.titulo;
+    (document.getElementById('promo-descricao') as HTMLTextAreaElement).value = promo.descricao;
+    (document.getElementById('promo-icone') as HTMLInputElement).value = promo.icone;
+    (document.getElementById('promo-imagem') as HTMLInputElement).value = promo.imagem_url;
+    (document.getElementById('promo-titulo') as HTMLInputElement).focus();
+  };
+
+  (window as any)._deletePromo = async (id: string) => {
+    if (!confirm('Tem certeza que deseja excluir esta promoção?')) return;
+    await deletePromocao(id);
+    await renderPromos();
+  };
+
+  // ═══════════════════════════════════════
+  //  CONTATO
+  // ═══════════════════════════════════════
+  async function loadContato() {
+    const info = await getContato();
+    if (!info) return;
+    const fields: Record<string, string> = {
+      'ct-endereco': info.endereco,
+      'ct-bairro': info.bairro,
+      'ct-cidade': info.cidade,
+      'ct-estado': info.estado,
+      'ct-tel1': info.telefone1,
+      'ct-tel2': info.telefone2,
+      'ct-whatsapp': info.whatsapp,
+      'ct-whatsapp-display': info.whatsapp_display,
+      'ct-email': info.email,
+      'ct-instagram': info.instagram,
+      'ct-instagram-handle': info.instagram_handle,
+      'ct-dias': info.dias,
+      'ct-horario': info.horario,
+    };
+    for (const [id, val] of Object.entries(fields)) {
+      const el = document.getElementById(id) as HTMLInputElement | null;
+      if (el && val) el.value = val;
+    }
+  }
+
+  document.getElementById('form-contato')!.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const val = (id: string) => (document.getElementById(id) as HTMLInputElement).value.trim();
+    await upsertContato({
+      endereco: val('ct-endereco'),
+      bairro: val('ct-bairro'),
+      cidade: val('ct-cidade'),
+      estado: val('ct-estado'),
+      telefone1: val('ct-tel1'),
+      telefone2: val('ct-tel2'),
+      whatsapp: val('ct-whatsapp'),
+      whatsapp_display: val('ct-whatsapp-display'),
+      email: val('ct-email'),
+      instagram: val('ct-instagram'),
+      instagram_handle: val('ct-instagram-handle'),
+      dias: val('ct-dias'),
+      horario: val('ct-horario'),
+    });
+    const saved = document.getElementById('contato-saved')!;
+    saved.classList.remove('hidden');
+    setTimeout(() => saved.classList.add('hidden'), 2500);
+  });
+
+  // ═══════════════════════════════════════
+  //  EXPORT / IMPORT
+  // ═══════════════════════════════════════
+  document.getElementById('btn-export')!.addEventListener('click', async () => {
+    const data = await exportAll();
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `pepperoni-admin-${new Date().toISOString().slice(0,10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+  });
+
+  document.getElementById('btn-import')!.addEventListener('change', async (e) => {
+    const file = (e.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    const text = await file.text();
+    try {
+      await importAll(text);
+      await renderItems();
+      await renderPromos();
+      await loadContato();
+      alert('Dados importados com sucesso!');
+    } catch {
+      alert('Erro ao importar. Verifique se o arquivo JSON está correto.');
+    }
+  });
+
+  // ─── Utility ───
+  function esc(str: string): string {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  }
+
+  // ─── Auto-restore session ───
+  const session = await getSession();
+  if (session) await showDashboard();
+</script>
