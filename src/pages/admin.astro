@@ -474,11 +474,14 @@ import AdminLayout from '../layouts/AdminLayout.astro';
     const titulo = (document.getElementById('item-titulo') as HTMLInputElement).value.trim();
     const descricao = (document.getElementById('item-descricao') as HTMLTextAreaElement).value.trim();
     const imagem_url = (document.getElementById('item-imagem') as HTMLInputElement).value.trim();
-    const categoria = (document.getElementById('item-categoria') as HTMLSelectElement).value as MenuItem['categoria'];
+    const categoriaEl = document.getElementById('item-categoria') as HTMLSelectElement;
+    const categoria = categoriaEl.value as MenuItem['categoria'];
 
     if (!titulo || !descricao) { alert('Preencha pelo menos o título e a descrição.'); return; }
+    if (!categoria) { alert('Selecione uma categoria.'); return; }
 
     if (id) {
+      // Only send changed fields, always include categoria
       await updateCardapioItem(id, { titulo, descricao, imagem_url, categoria });
     } else {
       await addCardapioItem({ titulo, descricao, imagem_url, categoria });
@@ -497,7 +500,18 @@ import AdminLayout from '../layouts/AdminLayout.astro';
     (document.getElementById('item-titulo') as HTMLInputElement).value = item.titulo;
     (document.getElementById('item-descricao') as HTMLTextAreaElement).value = item.descricao;
     (document.getElementById('item-imagem') as HTMLInputElement).value = item.imagem_url;
-    (document.getElementById('item-categoria') as HTMLSelectElement).value = item.categoria;
+
+    // Set categoria — add option dynamically if it doesn't exist
+    const catSelect = document.getElementById('item-categoria') as HTMLSelectElement;
+    const catValue = item.categoria || 'salgadas';
+    if (!catSelect.querySelector(`option[value="${catValue}"]`)) {
+      const opt = document.createElement('option');
+      opt.value = catValue;
+      opt.textContent = catValue;
+      catSelect.appendChild(opt);
+    }
+    catSelect.value = catValue;
+
     if (item.imagem_url) {
       (document.getElementById('item-img-tag') as HTMLImageElement).src = item.imagem_url;
       document.getElementById('item-img-preview')!.classList.remove('hidden');
