@@ -24,24 +24,24 @@ const pizzas = [
       <div class="text-left">
         <p
           id="hero-tag"
-          class="font-headline font-black text-sm tracking-[0.3em] uppercase text-green mb-6 opacity-0"
+          class="font-headline font-black text-sm tracking-[0.3em] uppercase text-green mb-6"
         >
           Maringá • Paraná • Desde sempre
         </p>
         <h1
           id="hero-title"
-          class="font-headline font-black text-7xl md:text-8xl lg:text-[clamp(5rem,10vw,8rem)] leading-[0.85] tracking-tighter text-on-surface mb-8 opacity-0"
+          class="font-headline font-black text-7xl md:text-8xl lg:text-[clamp(5rem,10vw,8rem)] leading-[0.85] tracking-tighter text-on-surface mb-8"
         >
           A PIZZA<br/>QUE NÃO<br/>TEM FIM.
         </h1>
         <p
           id="hero-sub"
-          class="font-body text-on-surface-variant text-lg md:text-xl max-w-md mb-10 opacity-0"
+          class="font-body text-on-surface-variant text-lg md:text-xl max-w-md mb-10"
         >
           Mais de <strong class="text-on-surface">70 sabores</strong> de pizzas doces, salgadas, massas e porções.
           Rodízio todos os dias das 18h30 às 22h30.
         </p>
-        <div id="hero-cta" class="flex flex-wrap gap-4 opacity-0">
+        <div id="hero-cta" class="flex flex-wrap gap-4">
           <a
             href="/cardapio"
             class="bg-primary text-on-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:scale-105 active:scale-95 transition-all duration-200 brutalist-shadow"
@@ -62,11 +62,16 @@ const pizzas = [
 
       <!-- Hero image (pizza) -->
       <div class="relative flex justify-center lg:justify-end" id="hero-img">
-        <div class="relative w-full max-w-md opacity-0 hero-logo">
+        <div class="relative w-full max-w-md hero-logo">
           <div class="w-[480px] h-[480px] max-w-full overflow-hidden rounded-xl drop-shadow-[0_35px_60px_rgba(222,54,53,0.25)] shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
             <img
               class="w-full h-full object-cover"
               src="https://res.cloudinary.com/dlf3r15qa/image/upload/f_auto,q_auto,w_480,h_480,c_fill/v1774737035/Pepperoni_vf5urf.png"
+              srcset="
+                https://res.cloudinary.com/dlf3r15qa/image/upload/f_auto,q_auto,w_320,h_320,c_fill/v1774737035/Pepperoni_vf5urf.png 320w,
+                https://res.cloudinary.com/dlf3r15qa/image/upload/f_auto,q_auto,w_480,h_480,c_fill/v1774737035/Pepperoni_vf5urf.png 480w
+              "
+              sizes="(max-width: 640px) 320px, 480px"
               alt="Pepperoni Pizzas e Massas — Logo Pizzaria Pepperoni Maringá"
               width="480"
               height="480"
@@ -79,7 +84,7 @@ const pizzas = [
     </div>
 
     <!-- Info bar -->
-    <div id="hero-info" class="relative z-10 mt-16 w-full max-w-7xl opacity-0">
+    <div id="hero-info" class="relative z-10 mt-16 w-full max-w-7xl">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-on-surface/10">
         <div class="py-6 md:pr-8 md:border-r border-on-surface/10">
           <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary dark:text-brand-yellow mb-1">Funcionamento</p>
@@ -244,13 +249,21 @@ const pizzas = [
 <script>
   import gsap from 'gsap';
 
+  // Set initial states via JS (not CSS opacity-0) so LCP image is visible before JS runs
+  gsap.set('#hero-tag', { opacity: 0 });
+  gsap.set('#hero-title', { opacity: 0, y: 80 });
+  gsap.set('#hero-sub', { opacity: 0, y: 40 });
+  gsap.set('#hero-cta', { opacity: 0, y: 30 });
+  gsap.set('#hero-img .hero-logo', { scale: 0.85, rotate: -8 });
+  gsap.set('#hero-info', { opacity: 0, y: 20 });
+
   // Hero entrance animation (runs immediately, no scroll trigger)
   const tl = gsap.timeline({ defaults: { ease: 'power4.out' } });
 
   tl.to('#hero-tag', { opacity: 1, y: 0, duration: 0.6, delay: 0.2 })
-    .fromTo('#hero-title', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 }, '-=0.3')
-    .fromTo('#hero-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.6')
-    .fromTo('#hero-cta', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
-    .fromTo('#hero-img .hero-logo', { opacity: 0, scale: 0.85, rotate: -8 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'elastic.out(1, 0.7)' }, '-=1')
-    .fromTo('#hero-info', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
+    .to('#hero-title', { opacity: 1, y: 0, duration: 1 }, '-=0.3')
+    .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7 }, '-=0.6')
+    .to('#hero-cta', { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+    .to('#hero-img .hero-logo', { scale: 1, rotate: 0, duration: 1.2, ease: 'elastic.out(1, 0.7)' }, '-=1')
+    .to('#hero-info', { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
 </script>
