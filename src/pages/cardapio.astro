@@ -45,7 +45,7 @@ const categorias = [
     {categorias.map((cat, i) => (
       <section id={`section-${cat.id}`} class={`mb-24 ${i > 0 ? 'hidden' : ''}`}>
         <h2 class="font-headline font-black text-4xl uppercase mb-10 flex items-center gap-4">
-          <span class="w-12 h-1 bg-primary shrink-0"></span>
+          <span class="w-12 h-1 bg-green shrink-0"></span>
           {cat.label}
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8" id={`grid-${cat.id}`}>
@@ -63,7 +63,7 @@ const categorias = [
     <!-- Rodízio CTA Banner -->
     <div class="bg-surface-container-highest p-10 md:p-14 flex flex-col md:flex-row items-center justify-between gap-8" data-fade-up>
       <div>
-        <p class="text-primary font-headline font-black text-sm tracking-widest uppercase mb-2">Modalidade</p>
+        <p class="text-green font-headline font-black text-sm tracking-widest uppercase mb-2">Modalidade</p>
         <h3 class="font-headline font-black text-4xl md:text-5xl text-on-surface uppercase tracking-tighter leading-none">
           RODÍZIO DIÁRIO
         </h3>

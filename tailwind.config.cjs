@@ -51,6 +51,10 @@ module.exports = {
         'on-error':                 'var(--color-on-error)',
         'error-container':          'var(--color-error-container)',
         'on-error-container':       'var(--color-on-error-container)',
+
+        'green':                    'var(--color-green)',
+        'green-dark':               'var(--color-green-dark)',
+        'brand-yellow':             'var(--color-brand-yellow)',
       },
       fontFamily: {
         headline: ['Epilogue', 'sans-serif'],

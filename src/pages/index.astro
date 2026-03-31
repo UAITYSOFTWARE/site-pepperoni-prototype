@@ -24,7 +24,7 @@ const pizzas = [
       <div class="text-left">
         <p
           id="hero-tag"
-          class="font-headline font-black text-sm tracking-[0.3em] uppercase text-primary mb-6 opacity-0"
+          class="font-headline font-black text-sm tracking-[0.3em] uppercase text-green mb-6 opacity-0"
         >
           Maringá • Paraná • Desde sempre
         </p>
@@ -52,7 +52,7 @@ const pizzas = [
             href="https://wa.me/5544991566299"
             target="_blank"
             rel="noopener noreferrer"
-            class="border-2 border-primary text-primary font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:bg-primary hover:text-on-primary transition-all duration-200 flex items-center gap-2"
+            class="border-2 border-green text-green font-headline font-black uppercase tracking-tighter px-8 py-4 text-lg hover:bg-green hover:text-white transition-all duration-200 flex items-center gap-2"
           >
             <span class="material-symbols-outlined">chat</span>
             Reservar Mesa
@@ -62,12 +62,14 @@ const pizzas = [
 
       <!-- Hero image (pizza) -->
       <div class="relative flex justify-center lg:justify-end" id="hero-img">
-        <div class="relative w-full max-w-lg aspect-square opacity-0">
-          <img
-            class="w-full h-full object-contain drop-shadow-[0_35px_60px_rgba(222,54,53,0.25)]"
-            src="/img/hero-pizza.svg"
-            alt="Pizza Pepperoni artesanal — Pizzaria Pepperoni Maringá"
-          />
+        <div class="relative w-full max-w-md opacity-0 hero-logo">
+          <div class="w-[480px] h-[480px] max-w-full overflow-hidden rounded-xl drop-shadow-[0_35px_60px_rgba(222,54,53,0.25)] shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+            <img
+              class="w-full h-full object-cover"
+              src="https://res.cloudinary.com/dlf3r15qa/image/upload/v1774737035/Pepperoni_vf5urf.png"
+              alt="Pepperoni Pizzas e Massas — Logo Pizzaria Pepperoni Maringá"
+            />
+          </div>
         </div>
       </div>
     </div>
@@ -76,15 +78,15 @@ const pizzas = [
     <div id="hero-info" class="relative z-10 mt-16 w-full max-w-7xl opacity-0">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-0 border-t border-on-surface/10">
         <div class="py-6 md:pr-8 md:border-r border-on-surface/10">
-          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Funcionamento</p>
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary dark:text-brand-yellow mb-1">Funcionamento</p>
           <p class="font-body font-medium text-on-surface-variant">Todos os dias • 18h30 às 22h30</p>
         </div>
         <div class="py-6 md:px-8 md:border-r border-on-surface/10">
-          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Reservas</p>
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary dark:text-brand-yellow mb-1">Reservas</p>
           <p class="font-body font-medium text-on-surface-variant">Via WhatsApp até as 18h</p>
         </div>
         <div class="py-6 md:pl-8">
-          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary mb-1">Localização</p>
+          <p class="font-headline font-black text-xs tracking-[0.25em] uppercase text-primary dark:text-brand-yellow mb-1">Localização</p>
           <p class="font-body font-medium text-on-surface-variant">Av. Rio Branco 56 — Maringá, PR</p>
         </div>
       </div>
@@ -92,29 +94,29 @@ const pizzas = [
   </section>
 
   <!-- Social Proof Stats -->
-  <section class="bg-surface-container py-16 px-6 md:px-8" aria-label="Diferenciais da Pizzaria Pepperoni">
+  <section class="bg-surface-container py-16 px-6 md:px-8 wood-texture" aria-label="Diferenciais da Pizzaria Pepperoni">
     <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0" data-stagger>
       <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
-        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">70+</span>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary dark:text-brand-yellow leading-none">70+</span>
         <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Sabores</span>
       </div>
       <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
-        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">7</span>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary dark:text-brand-yellow leading-none">7</span>
         <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Dias por semana</span>
       </div>
       <div class="flex flex-col items-center text-center md:border-r border-on-surface/10 px-4" data-stagger-item>
-        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">∞</span>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary dark:text-brand-yellow leading-none">∞</span>
         <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">Rodízio à vontade</span>
       </div>
       <div class="flex flex-col items-center text-center px-4" data-stagger-item>
-        <span class="font-headline font-black text-5xl md:text-6xl text-primary leading-none">4h</span>
+        <span class="font-headline font-black text-5xl md:text-6xl text-primary dark:text-brand-yellow leading-none">4h</span>
         <span class="font-body font-medium text-on-surface-variant text-sm mt-2 uppercase tracking-widest">De funcionamento</span>
       </div>
     </div>
   </section>
 
   <!-- Product Grid Section -->
-  <section class="bg-surface-container-low py-24 px-6 md:px-8">
+  <section class="bg-surface-container-low py-24 px-6 md:px-8 wood-texture">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4" data-fade-up>
         <h2 class="font-headline font-black text-5xl md:text-6xl text-on-surface tracking-tighter leading-none">
@@ -147,7 +149,7 @@ const pizzas = [
               <p class="text-on-surface-variant mb-6 font-medium text-sm">{pizza.desc}</p>
               <div class="flex justify-between items-center">
                 <span class="text-primary font-headline font-black text-xl">{pizza.price}</span>
-                <span class="material-symbols-outlined text-primary">local_pizza</span>
+                <span class="material-symbols-outlined text-green">local_pizza</span>
               </div>
             </div>
           </div>
@@ -190,7 +192,7 @@ const pizzas = [
               />
             </div>
             <div class="absolute top-4 right-4 bg-surface-container-highest/80 backdrop-blur-md px-4 py-2">
-              <span class="font-headline font-black text-primary uppercase text-sm">Massas & Porções</span>
+              <span class="font-headline font-black text-green uppercase text-sm">Massas & Porções</span>
             </div>
           </div>
 
@@ -199,7 +201,7 @@ const pizzas = [
               70+ sabores que fazem de cada visita uma experiência diferente.
             </p>
             <a
-              class="inline-flex items-center text-primary font-headline font-black text-lg hover:gap-6 gap-2 transition-all duration-300"
+              class="inline-flex items-center text-green font-headline font-black text-lg hover:gap-6 gap-2 transition-all duration-300"
               href="/cardapio"
             >
               VER CARDÁPIO COMPLETO
@@ -212,7 +214,7 @@ const pizzas = [
   </section>
 
   <!-- CTA Section -->
-  <section class="bg-primary py-28 px-6 md:px-8">
+  <section class="bg-primary py-28 px-6 md:px-8 wood-dark">
     <div class="max-w-7xl mx-auto text-center">
       <h2 class="font-headline font-black text-5xl md:text-7xl lg:text-8xl text-on-primary uppercase leading-none tracking-tighter mb-12" data-fade-up>
         RESERVE SUA MESA<br/>VIA WHATSAPP
@@ -245,6 +247,6 @@ const pizzas = [
     .fromTo('#hero-title', { opacity: 0, y: 80 }, { opacity: 1, y: 0, duration: 1 }, '-=0.3')
     .fromTo('#hero-sub', { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.7 }, '-=0.6')
     .fromTo('#hero-cta', { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
-    .fromTo('#hero-img .aspect-square', { opacity: 0, scale: 0.85, rotate: -8 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'elastic.out(1, 0.7)' }, '-=1')
+    .fromTo('#hero-img .hero-logo', { opacity: 0, scale: 0.85, rotate: -8 }, { opacity: 1, scale: 1, rotate: 0, duration: 1.2, ease: 'elastic.out(1, 0.7)' }, '-=1')
     .fromTo('#hero-info', { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6 }, '-=0.5');
 </script>

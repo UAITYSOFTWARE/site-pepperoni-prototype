@@ -16,12 +16,16 @@
   --color-primary-container:      #ffdad6;
   --color-on-primary-container:   #93000a;
   --color-primary-fixed:          #ffcdd2;
-  --color-primary-fixed-dim:      #ef5350;
+  --color-primary-fixed-dim:      #b71c1c;
 
-  --color-secondary:              #c7b700;
+  --color-secondary:              #4CB034;
   --color-on-secondary:           #ffffff;
-  --color-secondary-container:    #fff9c4;
-  --color-on-secondary-container: #3d3800;
+  --color-secondary-container:    #c8f0b8;
+  --color-on-secondary-container: #0F2F17;
+
+  --color-brand-yellow:           #FFF500;
+  --color-green:                  #4CB034;
+  --color-green-dark:             #388027;
 
   --color-tertiary:               #505050;
   --color-on-tertiary:            #ffffff;
@@ -58,8 +62,8 @@
   --color-on-error-container:     #410002;
 
   --shadow-color:                 rgba(0, 0, 0, 0.12);
-  --focus-ring:                   #DE3635;
-  --text-stroke-color:            #DE3635;
+  --focus-ring:                   #4CB034;
+  --text-stroke-color:            #4CB034;
   --text-outline-color:           rgba(0, 0, 0, 0.15);
   --swiper-bullet:                #888888;
   --swiper-active:                #DE3635;
@@ -72,12 +76,16 @@
   --color-primary-container:      #3a0a0a;
   --color-on-primary-container:   #ff8a80;
   --color-primary-fixed:          #ffcdd2;
-  --color-primary-fixed-dim:      #ef5350;
+  --color-primary-fixed-dim:      #b71c1c;
 
-  --color-secondary:              #EDDE3C;
-  --color-on-secondary:           #1a1800;
-  --color-secondary-container:    #3d3800;
-  --color-on-secondary-container: #fff176;
+  --color-secondary:              #4CB034;
+  --color-on-secondary:           #ffffff;
+  --color-secondary-container:    #1a3a10;
+  --color-on-secondary-container: #8bdb6f;
+
+  --color-brand-yellow:           #FFF500;
+  --color-green:                  #4CB034;
+  --color-green-dark:             #388027;
 
   --color-tertiary:               #e0e0e0;
   --color-on-tertiary:            #1a1a1a;
@@ -114,8 +122,8 @@
   --color-on-error-container:     #ffdad6;
 
   --shadow-color:                 rgba(0, 0, 0, 0.5);
-  --focus-ring:                   #DE3635;
-  --text-stroke-color:            #DE3635;
+  --focus-ring:                   #4CB034;
+  --text-stroke-color:            #4CB034;
   --text-outline-color:           rgba(255, 255, 255, 0.2);
   --swiper-bullet:                #b0b0b0;
   --swiper-active:                #DE3635;
@@ -213,6 +221,63 @@
 
   .brutalist-shadow {
     box-shadow: 0 20px 40px var(--shadow-color);
+  }
+
+  /* Wood texture overlay — uses SVG noise pattern for visible grain */
+  /* Nav wood texture — handled by inline element, not pseudo-element */
+
+  /* Wood texture overlay — uses original pattern images */
+  .wood-texture {
+    position: relative;
+  }
+  .wood-texture::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url('/img/bg-pattern-2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.08;
+  }
+  .dark .wood-texture::before {
+    opacity: 0.15;
+  }
+  .wood-texture > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Dark wood variant — darker topo texture */
+  .wood-dark {
+    position: relative;
+  }
+  .wood-dark::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: url('/img/bg-topo.jpg');
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+    opacity: 0.12;
+  }
+  .dark .wood-dark::before {
+    opacity: 0.25;
+  }
+  .wood-dark > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Rodapé texture — slate with ingredients, for footer */
+  .wood-rodape {
+    background-image: url('/img/bg-rodape.jpg');
+    background-size: cover;
+    background-position: bottom center;
+    background-repeat: no-repeat;
   }
 
   /* Swiper overrides */
